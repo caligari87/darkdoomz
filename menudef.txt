@@ -1,12 +1,12 @@
 OptionValue "ddz_Presets" {
-	-256, "DarkDoom Black"
+	-256, "Pure (DarkDoom Black)"
 	-224, "Pitch"
 	-192, "Stygian"
 	-160, "Inky"
-	-128, "Oppressive"
-	-96, "DarkDoom Lite"
-	-64, "Dismal"
-	-32, "Murky"
+	-128, "Oppressive (DarkDoom)"
+	-96, "Dismal (DarkDoom Lite)"
+	-64, "Murky"
+	-32, "Dim"
 	0, "Normal"
 }
 
