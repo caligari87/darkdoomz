@@ -1,0 +1,22 @@
+OptionValue "ddz_Presets" {
+	-256, "DarkDoom Black"
+	-224, "Pitch"
+	-192, "Stygian"
+	-160, "Inky"
+	-128, "Oppressive"
+	-96, "DarkDoom Lite"
+	-64, "Dismal"
+	-32, "Murky"
+	0, "Normal"
+}
+
+AddOptionMenu "OptionsMenu" {
+	StaticText " "
+	Submenu "DarkDoomZ Settings", "Dark_Adjust"
+}
+
+OptionMenu "Dark_Adjust" {
+	Title "DarkDoomZ Settings"
+	Option "Presets","ddz_levels", "ddz_Presets"
+	Slider "Darken","ddz_levels",-256,0,8,0
+}

@@ -1,0 +1,36 @@
+version "2.5"
+
+//Looked to Fancy World by Kinsie for how to do this
+//Code template by Gutawer
+/*Class SectorLightAdjust : EventHandler {
+	override void WorldLoaded(WorldEvent e) {
+		for (int i = 0; i < level.Sectors.Size(); i++) {
+			level.Sectors[i].lightlevel /= CVar.GetCVar('darken_factor').GetInt();
+		}
+		for (int i = 0; i < level.Sides.Size(); i++) {
+			level.Sides[i].light /= CVar.GetCVar('darken_factor').GetInt();
+		}
+	}
+}*/
+
+//Courtesy FishyClockwork, with modifications by me
+Class SectorLightAdjust : EventHandler {
+	Array<int> BaseLightLevels;
+	int OldDarkenFactor;
+
+	override void WorldLoaded(WorldEvent e) {
+		BaseLightLevels.Clear();
+		for(int i = 0; i < Level.Sectors.Size(); i++) {
+			BaseLightlevels.Push(Level.Sectors[i].LightLevel);
+		}
+	}
+
+	override void WorldTick() {
+		if(OldDarkenFactor != CVar.GetCvar("ddz_levels").GetInt() && CVar.GetCvar("ddz_levels").GetInt()<=0) {
+			for(int i = 0; i < BaseLightLevels.Size(); i++) {
+				Level.Sectors[i].Lightlevel = BaseLightLevels[i] + CVar.GetCvar("ddz_levels").GetInt();
+			}
+		}
+		OldDarkenFactor = CVar.GetCvar("ddz_levels").GetInt();
+    }
+}
