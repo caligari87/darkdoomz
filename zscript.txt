@@ -13,7 +13,7 @@ version "2.5"
 	}
 }*/
 
-//Courtesy FishyClockwork, with modifications by me
+//Courtesy FishyClockwork, with modifications by Caligari87
 Class SectorLightAdjust : EventHandler {
 	Array<int> BaseLightLevels;
 	int OldDarkenFactor;

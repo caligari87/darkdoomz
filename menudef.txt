@@ -19,4 +19,6 @@ OptionMenu "Dark_Adjust" {
 	Title "DarkDoomZ Settings"
 	Option "Presets","ddz_levels", "ddz_Presets"
 	Slider "Darken","ddz_levels",-256,0,8,0
+	StaticText " "
+	StaticText "Changes will be applied on menu close"
 }
