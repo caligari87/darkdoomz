@@ -16,7 +16,7 @@ version "2.5"
 //Courtesy FishyClockwork, with modifications by Caligari87
 Class SectorLightAdjust : EventHandler {
 	Array<int> BaseLightLevels;
-	int OldDarkenFactor;
+	int OldMode,OldSubtract,OldMaxbright,OldBlacklevel,OldDivfactor;
 
 	override void WorldLoaded(WorldEvent e) {
 		BaseLightLevels.Clear();
@@ -26,11 +26,52 @@ Class SectorLightAdjust : EventHandler {
 	}
 
 	override void WorldTick() {
-		if(OldDarkenFactor != CVar.GetCvar("ddz_levels").GetInt() && CVar.GetCvar("ddz_levels").GetInt()<=0) {
+		if(OldMode != CVar.GetCvar("ddz_mode").GetInt() ||
+			OldSubtract != CVar.GetCvar("ddz_subtract").GetInt() ||
+			OldMaxbright != CVar.GetCvar("ddz_maxbright").GetInt() ||
+			OldDivfactor != CVar.GetCvar("ddz_divfactor").GetInt() ||
+			OldBlacklevel != CVar.GetCvar("ddz_blacklevel").GetInt() ) {
+
 			for(int i = 0; i < BaseLightLevels.Size(); i++) {
-				Level.Sectors[i].Lightlevel = BaseLightLevels[i] + CVar.GetCvar("ddz_levels").GetInt();
+				switch(CVar.GetCvar("ddz_mode").GetInt()) {
+
+					case 1: //subtract raw light level (simple fade)
+						Level.Sectors[i].Lightlevel = BaseLightLevels[i] + CVar.GetCvar("ddz_subtract").GetInt();
+						break;
+
+					case 2: //max brightness level
+						Level.Sectors[i].Lightlevel = BaseLightLevels[i]; //reset lightlevels
+						if(BaseLightLevels[i] > CVar.GetCvar("ddz_maxbright").GetInt()) {
+							Level.Sectors[i].Lightlevel = CVar.GetCvar("ddz_maxbright").GetInt();
+						}
+						break;
+
+					case 3: //divide lightlevel
+						if(CVar.GetCvar("ddz_divfactor").GetInt() != 0) {
+							Level.Sectors[i].Lightlevel = BaseLightLevels[i] / CVar.GetCvar("ddz_divfactor").GetInt();
+						}
+						break;
+
+					case 4: //raise black level
+						Level.Sectors[i].Lightlevel = BaseLightLevels[i]; //reset lightlevels
+						float NewLevel = BaseLightLevels[i] - CVar.GetCvar("ddz_blacklevel").GetInt(); //Subtract new low from normal levels
+						float NewRange = 256 - CVar.GetCvar("ddz_blacklevel").GetInt(); //Calculate new fit range
+						NewRange = clamp(NewRange, 1, 256); //avoid div by zero
+						float LinearMultiplier = NewLevel / NewRange; //Multiplier for values above low
+						Level.Sectors[i].Lightlevel = BaseLightLevels[i] * LinearMultiplier;
+						break;
+
+					default: //disable
+						Level.Sectors[i].Lightlevel = BaseLightLevels[i]; //reset lightlevels
+						break;
+				}
 			}
 		}
-		OldDarkenFactor = CVar.GetCvar("ddz_levels").GetInt();
+
+		OldMode = CVar.GetCvar("ddz_mode").GetInt();
+		OldSubtract = CVar.GetCvar("ddz_subtract").GetInt();
+		OldMaxbright = CVar.GetCvar("ddz_maxbright").GetInt();
+		OldDivfactor = CVar.GetCvar("ddz_divfactor").GetInt();
+		OldBlacklevel = CVar.GetCvar("ddz_blacklevel").GetInt();
     }
 }

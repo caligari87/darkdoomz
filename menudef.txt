@@ -1,4 +1,12 @@
-OptionValue "ddz_Presets" {
+OptionValue "Nice_Modes" {
+	0, "Disable"
+	1, "Subtraction"
+	2, "Clamp brightness"
+	3, "Divide"
+	//4, "Raise black level"
+}
+
+OptionValue "Sub_Presets" {
 	-256, "Pure (DarkDoom Black)"
 	-224, "Pitch"
 	-192, "Stygian"
@@ -17,8 +25,26 @@ AddOptionMenu "OptionsMenu" {
 
 OptionMenu "Dark_Adjust" {
 	Title "DarkDoomZ Settings"
-	Option "Presets","ddz_levels", "ddz_Presets"
-	Slider "Darken","ddz_levels",-256,0,8,0
+
+	Option "Mode","ddz_mode","Nice_Modes"
+
+	StaticText " "
+	StaticText "Subtraction Mode"
+	Option "Presets","ddz_subtract", "Sub_Presets"
+	Slider "Amount","ddz_subtract",-256,0,8,0
+
+	StaticText " "
+	StaticText "Clamp Brightness Mode"
+	Slider "Max Brightness","ddz_maxbright",0,256,8,0
+
+	StaticText " "
+	StaticText "Divide Mode"
+	Slider "Darken Factor","ddz_divfactor",1,8,1,0
+
+	/*StaticText " "
+	StaticText "Black Level Mode"
+	Slider "Black Level","ddz_blacklevel",0,256,8,0*/
+
 	StaticText " "
 	StaticText "Changes will be applied on menu close"
 }
