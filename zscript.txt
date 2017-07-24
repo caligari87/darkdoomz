@@ -16,7 +16,9 @@ version "2.5"
 //Courtesy FishyClockwork, with modifications by Caligari87
 Class SectorLightAdjust : EventHandler {
 	Array<int> BaseLightLevels;
-	int OldMode,OldSubtract,OldMaxbright,OldBlacklevel,OldDivfactor;
+	int Mode,Preset,Custom;
+	int OldMode,OldPreset,OldCustom;
+	int Adjustment;
 
 	override void WorldLoaded(WorldEvent e) {
 		BaseLightLevels.Clear();
@@ -26,39 +28,25 @@ Class SectorLightAdjust : EventHandler {
 	}
 
 	override void WorldTick() {
-		if(OldMode != CVar.GetCvar("ddz_mode").GetInt() ||
-			OldSubtract != CVar.GetCvar("ddz_subtract").GetInt() ||
-			OldMaxbright != CVar.GetCvar("ddz_maxbright").GetInt() ||
-			OldDivfactor != CVar.GetCvar("ddz_divfactor").GetInt() ||
-			OldBlacklevel != CVar.GetCvar("ddz_blacklevel").GetInt() ) {
-
+		Mode = CVar.GetCvar("ddz_mode").GetInt();
+		Preset = CVar.GetCvar("ddz_preset").GetInt();
+		Custom = CVar.GetCvar("ddz_custom").GetInt();
+		if(OldMode != Mode || OldPreset != Preset || OldCustom != Custom ) {
+			Adjustment = (32*Preset)-Custom;
+			Adjustment = clamp(Adjustment,0,256);
 			for(int i = 0; i < BaseLightLevels.Size(); i++) {
-				switch(CVar.GetCvar("ddz_mode").GetInt()) {
+				switch(Mode) {
 
 					case 1: //subtract raw light level (simple fade)
-						Level.Sectors[i].Lightlevel = BaseLightLevels[i] + CVar.GetCvar("ddz_subtract").GetInt();
+						Level.Sectors[i].Lightlevel = BaseLightLevels[i] - Adjustment;
 						break;
 
-					case 2: //max brightness level
-						Level.Sectors[i].Lightlevel = BaseLightLevels[i]; //reset lightlevels
-						if(BaseLightLevels[i] > CVar.GetCvar("ddz_maxbright").GetInt()) {
-							Level.Sectors[i].Lightlevel = CVar.GetCvar("ddz_maxbright").GetInt();
-						}
+					case 2: //linear compression
+						Level.Sectors[i].Lightlevel = BaseLightLevels[i] * (1.0-Adjustment/256.0);
 						break;
 
-					case 3: //divide lightlevel
-						if(CVar.GetCvar("ddz_divfactor").GetInt() != 0) {
-							Level.Sectors[i].Lightlevel = BaseLightLevels[i] / CVar.GetCvar("ddz_divfactor").GetInt();
-						}
-						break;
-
-					case 4: //raise black level
-						Level.Sectors[i].Lightlevel = BaseLightLevels[i]; //reset lightlevels
-						float NewLevel = BaseLightLevels[i] - CVar.GetCvar("ddz_blacklevel").GetInt(); //Subtract new low from normal levels
-						float NewRange = 256 - CVar.GetCvar("ddz_blacklevel").GetInt(); //Calculate new fit range
-						NewRange = clamp(NewRange, 1, 256); //avoid div by zero
-						float LinearMultiplier = NewLevel / NewRange; //Multiplier for values above low
-						Level.Sectors[i].Lightlevel = BaseLightLevels[i] * LinearMultiplier;
+					case 3: //clamp max brightness level
+						Level.Sectors[i].Lightlevel = clamp(BaseLightLevels[i],0,256-Adjustment);
 						break;
 
 					default: //disable
@@ -68,10 +56,8 @@ Class SectorLightAdjust : EventHandler {
 			}
 		}
 
-		OldMode = CVar.GetCvar("ddz_mode").GetInt();
-		OldSubtract = CVar.GetCvar("ddz_subtract").GetInt();
-		OldMaxbright = CVar.GetCvar("ddz_maxbright").GetInt();
-		OldDivfactor = CVar.GetCvar("ddz_divfactor").GetInt();
-		OldBlacklevel = CVar.GetCvar("ddz_blacklevel").GetInt();
+		OldMode = Mode;
+		OldPreset = Preset;
+		OldCustom = Custom;
     }
 }

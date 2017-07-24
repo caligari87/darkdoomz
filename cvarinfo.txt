@@ -1,5 +1,3 @@
 server int ddz_mode = 1;
-server int ddz_subtract = -96;
-server int ddz_maxbright = 96;
-server int ddz_divfactor = 3;
-server int ddz_blacklevel = 0;
+server int ddz_preset = 3;
+server int ddz_custom = 0;

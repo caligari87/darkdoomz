@@ -1,21 +1,20 @@
 OptionValue "Nice_Modes" {
 	0, "Disable"
-	1, "Subtraction"
-	2, "Clamp brightness"
-	3, "Divide"
-	//4, "Raise black level"
+	1, "Subtract"
+	2, "Compress"
+	//3, "Clamp"
 }
 
-OptionValue "Sub_Presets" {
-	-256, "Pure (DarkDoom Black)"
-	-224, "Pitch"
-	-192, "Stygian"
-	-160, "Inky"
-	-128, "Oppressive (DarkDoom)"
-	-96, "Dismal (DarkDoom Lite)"
-	-64, "Murky"
-	-32, "Dim"
+OptionValue "Presets" {
 	0, "Normal"
+	1, "Dim"
+	2, "Murky"
+	3, "Dismal - DarkDoom Lite"
+	4, "Oppressive - DarkDoom Classic"
+	5, "Inky"
+	6, "Stygian"
+	7, "Pitch"
+	8, "Pure - DarkDoom Black"
 }
 
 AddOptionMenu "OptionsMenu" {
@@ -26,25 +25,11 @@ AddOptionMenu "OptionsMenu" {
 OptionMenu "Dark_Adjust" {
 	Title "DarkDoomZ Settings"
 
+	Option "Presets","ddz_preset", "Presets"
 	Option "Mode","ddz_mode","Nice_Modes"
+	Slider "Fine-tune","ddz_custom",-16,16,1,0
 
 	StaticText " "
-	StaticText "Subtraction Mode"
-	Option "Presets","ddz_subtract", "Sub_Presets"
-	Slider "Amount","ddz_subtract",-256,0,8,0
-
-	StaticText " "
-	StaticText "Clamp Brightness Mode"
-	Slider "Max Brightness","ddz_maxbright",0,256,8,0
-
-	StaticText " "
-	StaticText "Divide Mode"
-	Slider "Darken Factor","ddz_divfactor",1,8,1,0
-
-	/*StaticText " "
-	StaticText "Black Level Mode"
-	Slider "Black Level","ddz_blacklevel",0,256,8,0*/
-
-	StaticText " "
+	StaticText "DarkDoom presets apply only to subtractive mode"
 	StaticText "Changes will be applied on menu close"
 }
