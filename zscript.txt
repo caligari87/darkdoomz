@@ -18,7 +18,8 @@ Class SectorLightAdjust : EventHandler {
 	Array<int> BaseLightLevels;
 	int Mode,Preset,Custom;
 	int OldMode,OldPreset,OldCustom;
-	int Adjustment;
+	int BaseAdjustment, FinalAdjustment;
+	bool IsSky;
 
 	override void WorldLoaded(WorldEvent e) {
 		BaseLightLevels.Clear();
@@ -32,21 +33,32 @@ Class SectorLightAdjust : EventHandler {
 		Preset = CVar.GetCvar("ddz_preset").GetInt();
 		Custom = CVar.GetCvar("ddz_custom").GetInt();
 		if(OldMode != Mode || OldPreset != Preset || OldCustom != Custom ) {
-			Adjustment = (32*Preset)-Custom;
-			Adjustment = clamp(Adjustment,0,256);
+			BaseAdjustment = (32*Preset)-Custom;
+			BaseAdjustment = clamp(BaseAdjustment,0,256);
 			for(int i = 0; i < BaseLightLevels.Size(); i++) {
-				switch(Mode) {
+				IsSky = (level.Sectors[i].GetTexture(0) == skyflatnum || level.Sectors[i].GetTexture(1) == skyflatnum);
 
+				switch(IsSky) {
+					case true:
+						FinalAdjustment = 0;
+						break;
+
+					case false:
+						FinalAdjustment = BaseAdjustment;
+						break;
+				}
+
+				switch(Mode) {
 					case 1: //subtract raw light level (simple fade)
-						Level.Sectors[i].Lightlevel = BaseLightLevels[i] - Adjustment;
+						Level.Sectors[i].Lightlevel = BaseLightLevels[i] - FinalAdjustment;
 						break;
 
 					case 2: //linear compression
-						Level.Sectors[i].Lightlevel = BaseLightLevels[i] * (1.0-Adjustment/256.0);
+						Level.Sectors[i].Lightlevel = BaseLightLevels[i] * (1.0-FinalAdjustment/256.0);
 						break;
 
 					case 3: //clamp max brightness level
-						Level.Sectors[i].Lightlevel = clamp(BaseLightLevels[i],0,256-Adjustment);
+						Level.Sectors[i].Lightlevel = clamp(BaseLightLevels[i],0,256-FinalAdjustment);
 						break;
 
 					default: //disable
