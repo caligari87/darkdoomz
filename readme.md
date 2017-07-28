@@ -3,12 +3,13 @@ This simple mutator/add-on re-implements the concept behind SidDoyle's Dark Doom
 
 A settings menu is provided to adjust the effect. The following settings are available:
 
-* **Preset** Eight pre-set lighting levels in 32-unit increments. Equivalents to DarkDoom Lite, Classic, and Black are noted.
-* **Mode** Two adjustment modes are available:
-  * **Subtract** Simply subtracts from the light level. This mimics DarkDoom's method.
-  * **Compress** Applies a linear range commpression, so the light levels don't bottom out as quickly.
+* **Preset** - Eight pre-set lighting levels in 32-unit increments. Equivalents to DarkDoom Lite, Classic, and Black are noted.
+* **Mode** - Two adjustment modes are available:
+  * **Subtract** - Simply subtracts from the light level. This mimics DarkDoom's method.
+  * **Compress** - Applies a linear range commpression, so the light levels don't bottom out as quickly.
   * A third adjustment mode is available by setting `ddz_mode` to `3` in the console. This simply clamps the maximum brightness level without lowering darker sectors. Not exposed in the menu because it doesn't really mesh with the available presets.
-* **Fine-Tune** Adjust the preset darkness setting by +/-16 units.
+* **Fine-Tune** - Adjust the preset darkness setting by +/-16 units.
+* **Sky Sectors** - Adjust how much effect is applied to sectors with a sky (full, half, or none)
 
 ## Notes
 
