@@ -1,12 +1,12 @@
 OptionValue "Nice_Modes" {
-	//0, "Disable"
+	0, "Disable"
 	1, "Subtract"
 	2, "Compress"
 	//3, "Clamp"
 }
 
 OptionValue "Presets" {
-	0, "Disable"
+	//0, "Disable"
 	1, "Dim"
 	2, "Murky"
 	3, "Dismal - DarkDoom Lite"
