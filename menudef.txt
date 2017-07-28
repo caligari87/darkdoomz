@@ -25,8 +25,8 @@ AddOptionMenu "OptionsMenu" {
 OptionMenu "Dark_Adjust" {
 	Title "DarkDoomZ Settings"
 
-	Option "Presets","ddz_preset", "Presets"
 	Option "Mode","ddz_mode","Nice_Modes"
+	Option "Presets","ddz_preset", "Presets"
 	Slider "Fine-tune","ddz_custom",-16,16,1,0
 
 	StaticText " "
