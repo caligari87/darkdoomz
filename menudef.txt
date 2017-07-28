@@ -17,6 +17,12 @@ OptionValue "Presets" {
 	8, "Pure - DarkDoom Black"
 }
 
+OptionValue "Sky_Modes" {
+	2, "Full effect"
+	1, "Half effect"
+	0, "No change"
+}
+
 AddOptionMenu "OptionsMenu" {
 	StaticText " "
 	Submenu "DarkDoomZ Settings", "Dark_Adjust"
@@ -28,6 +34,7 @@ OptionMenu "Dark_Adjust" {
 	Option "Mode","ddz_mode","Nice_Modes"
 	Option "Presets","ddz_preset", "Presets"
 	Slider "Fine-tune","ddz_custom",-16,16,1,0
+	Option "Sky Sectors","ddz_skymode", "Sky_Modes"
 
 	StaticText " "
 	StaticText "DarkDoom presets apply only to subtractive mode"

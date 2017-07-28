@@ -16,8 +16,8 @@ version "2.5"
 //Courtesy FishyClockwork, with modifications by Caligari87
 Class SectorLightAdjust : EventHandler {
 	Array<int> BaseLightLevels;
-	int Mode,Preset,Custom;
-	int OldMode,OldPreset,OldCustom;
+	int Mode,Preset,Custom,SkyMode;
+	int OldMode,OldPreset,OldCustom,OldSkyMode;
 	int BaseAdjustment, FinalAdjustment;
 	bool IsSky;
 
@@ -32,15 +32,22 @@ Class SectorLightAdjust : EventHandler {
 		Mode = CVar.GetCvar("ddz_mode").GetInt();
 		Preset = CVar.GetCvar("ddz_preset").GetInt();
 		Custom = CVar.GetCvar("ddz_custom").GetInt();
-		if(OldMode != Mode || OldPreset != Preset || OldCustom != Custom ) {
+		SkyMode = CVar.GetCvar("ddz_skymode").GetInt();
+
+		if(OldMode != Mode ||
+		   OldPreset != Preset ||
+		   OldCustom != Custom ||
+		   OldSkyMode != Skymode) {
+
 			BaseAdjustment = (32*Preset)-Custom;
 			BaseAdjustment = clamp(BaseAdjustment,0,256);
 			for(int i = 0; i < BaseLightLevels.Size(); i++) {
-				IsSky = (level.Sectors[i].GetTexture(0) == skyflatnum || level.Sectors[i].GetTexture(1) == skyflatnum);
+				IsSky = (level.Sectors[i].GetTexture(0) == skyflatnum ||
+						 level.Sectors[i].GetTexture(1) == skyflatnum);
 
 				switch(IsSky) {
 					case true:
-						FinalAdjustment = 0;
+						FinalAdjustment = (0.5 * SkyMode) * BaseAdjustment;
 						break;
 
 					case false:
@@ -71,5 +78,6 @@ Class SectorLightAdjust : EventHandler {
 		OldMode = Mode;
 		OldPreset = Preset;
 		OldCustom = Custom;
+		OldSkyMode = SkyMode;
     }
 }
