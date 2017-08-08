@@ -1,6 +1,6 @@
 OptionValue "Nice_Modes" {
 	0, "Disable"
-	1, "Subtract (DarkDoom)"
+	1, "Subtract - DarkDoom"
 	2, "Compress"
 	//3, "Clamp"
 }
