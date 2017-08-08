@@ -1,11 +1,11 @@
 OptionValue "Nice_Modes" {
 	0, "Disable"
-	1, "Subtract"
+	1, "Subtract (DarkDoom)"
 	2, "Compress"
 	//3, "Clamp"
 }
 
-OptionValue "Presets" {
+OptionValue "Nice_Settings" {
 	//0, "Disable"
 	1, "Dim"
 	2, "Murky"
@@ -17,7 +17,7 @@ OptionValue "Presets" {
 	8, "Pure - DarkDoom Black"
 }
 
-OptionValue "Sky_Modes" {
+OptionValue "Nice_Sky_Modes" {
 	2, "Full effect"
 	1, "Half effect"
 	0, "No change"
@@ -32,11 +32,7 @@ OptionMenu "Dark_Adjust" {
 	Title "DarkDoomZ Settings"
 
 	Option "Mode","ddz_mode","Nice_Modes"
-	Option "Presets","ddz_preset", "Presets"
+	Option "Setting","ddz_preset", "Nice_Settings"
 	Slider "Fine-tune","ddz_custom",-16,16,1,0
-	Option "Sky Sectors","ddz_skymode", "Sky_Modes"
-
-	StaticText " "
-	StaticText "DarkDoom presets apply only to subtractive mode"
-	StaticText "Changes will be applied on menu close"
+	Option "Sky Sectors","ddz_skymode", "Nice_Sky_Modes"
 }
