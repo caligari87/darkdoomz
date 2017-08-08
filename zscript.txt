@@ -14,7 +14,7 @@ version "2.5"
 }*/
 
 //Courtesy FishyClockwork, with modifications by Caligari87
-Class SectorLightAdjust : EventHandler {
+class DarkDoomZ_SectorLightAdjust : EventHandler {
 	Array<int> BaseLightLevels;
 	int Mode,Preset,Custom,SkyMode;
 	int OldMode,OldPreset,OldCustom,OldSkyMode;
