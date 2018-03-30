@@ -1,4 +1,4 @@
-version "2.5"
+version "3.3"
 
 //Looked to Fancy World by Kinsie for how to do this
 //Code template by Gutawer
@@ -76,5 +76,85 @@ class DarkDoomZ_SectorLightAdjust : EventHandler {
 		OldPreset = Preset;
 		OldCustom = Custom;
 		OldSkyMode = SkyMode;
+	}
+}
+
+version "3.0"
+
+class DarkDoomZ_Flashlight : CustomInventory {
+	DarkDoomZ_Spotlight SelfLight1, SelfLight2, SelfLight3;
+	default {
+		+INVENTORY.AUTOACTIVATE;
+	}
+
+	override void DoEffect() {
+		super.DoEffect();
+		if(!SelfLight1) {
+			SelfLight1 = DarkDoomZ_Spotlight(Spawn("DarkDoomZ_Spotlight",(0,0,0),false));
+			SelfLight1.FollowTarget = owner;
+			SelfLight1.args[0] = 224; //R
+			SelfLight1.args[1] = 236; //G
+			SelfLight1.args[2] = 255; //B
+			SelfLight1.args[3] = 768; //Radius
+			SelfLight1.SpotInnerAngle = 5;
+			SelfLight1.SpotOuterAngle = 10;
+		}
+		if(!SelfLight2) {
+			SelfLight2 = DarkDoomZ_Spotlight(Spawn("DarkDoomZ_Spotlight",(0,0,0),false));
+			SelfLight2.FollowTarget = owner;
+			SelfLight2.args[0] = 224; //R
+			SelfLight2.args[1] = 236; //G
+			SelfLight2.args[2] = 255; //B
+			SelfLight2.args[3] = 384; //Radius
+			SelfLight2.SpotInnerAngle = 10;
+			SelfLight2.SpotOuterAngle = 25;
+		}
+		if(!SelfLight3) {
+			SelfLight3 = DarkDoomZ_Spotlight(Spawn("DarkDoomZ_Spotlight",(0,0,0),false));
+			SelfLight3.FollowTarget = owner;
+			SelfLight3.args[0] = 224; //R
+			SelfLight3.args[1] = 236; //G
+			SelfLight3.args[2] = 255; //B
+			SelfLight3.args[3] = 192; //Radius
+			SelfLight3.SpotInnerAngle = 25;
+			SelfLight3.SpotOuterAngle = 60;
+		}
+	}
+
+	States {
+	Spawn:
+		TNT1 A -1;
+		stop;
+	Use:
+		TNT1 A 1;
+		loop;
+	}
+}
+
+class DarkDoomZ_Spotlight : DynamicLight {
+	actor FollowTarget;
+	double vela, velp;
+
+	default {
+		DynamicLight.Type "Point";
+		+DYNAMICLIGHT.ATTENUATE;
+		+DYNAMICLIGHT.SPOT
+	}
+	override void Tick() {
+		super.Tick();
+		if(followTarget) {
+			vel.x += DampedSpring(pos.x, followTarget.pos.x,    vel.x, 0.75, 0.9);
+			vel.y += DampedSpring(pos.y, followTarget.pos.y,    vel.y, 0.75, 0.9);
+			vel.z += DampedSpring(pos.z, followTarget.pos.z+32, vel.z, 0.75, 0.9);
+			vela  += DampedSpring(angle, followTarget.angle,    vela,  0.25, 0.9);
+			velp  += DampedSpring(pitch, followTarget.pitch,    velp,  0.25, 0.9);
+			setOrigin(pos + vel, true);
+			A_SetAngle(angle + vela, true);
+			A_SetPitch(pitch + velp, true);
+		}
+	}
+
+	double DampedSpring(double p, double r, double v, double k, double d) {
+		return -(d * v) - (k * (p - r));
 	}
 }
