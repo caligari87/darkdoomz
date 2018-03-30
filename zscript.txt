@@ -79,8 +79,6 @@ class DarkDoomZ_SectorLightAdjust : EventHandler {
 	}
 }
 
-version "3.0"
-
 class DarkDoomZ_Flashlight : CustomInventory {
 	DarkDoomZ_Spotlight SelfLight1, SelfLight2, SelfLight3;
 	default {
