@@ -35,4 +35,5 @@ OptionMenu "Dark_Adjust" {
 	Option "Setting","ddz_preset", "Nice_Settings"
 	Slider "Fine-tune","ddz_custom",-16,16,1,0
 	Option "Sky Sectors","ddz_skymode", "Nice_Sky_Modes"
+	Control "Flashlight Toggle", "use DarkDoomZ_Flashlight"
 }

@@ -1,0 +1,3 @@
+addkeysection "DarkDoomZ" "darkdoomz"
+addmenukey "Toggle Flashlight" "use DarkDoomZ_Flashlight"
+defaultbind "f" "use DarkDoomZ_Flashlight"

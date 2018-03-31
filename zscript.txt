@@ -29,6 +29,11 @@ class DarkDoomZ_SectorLightAdjust : EventHandler {
 		ChangeLighting();
 	}
 
+	override void PlayerEntered(PlayerEvent e) {
+		PlayerInfo player = players[e.PlayerNumber];
+		player.mo.giveinventory("DarkDoomZ_Flashlight", 1);
+	}
+
 	override void UiTick() {
 		EventHandler.SendNetworkEvent("UpdateLights");
 	}
@@ -80,52 +85,59 @@ class DarkDoomZ_SectorLightAdjust : EventHandler {
 }
 
 class DarkDoomZ_Flashlight : CustomInventory {
-	DarkDoomZ_Spotlight SelfLight1, SelfLight2, SelfLight3;
+	DarkDoomZ_Spotlight SelfLight1, SelfLight2;
+	bool Active;
+
 	default {
-		+INVENTORY.AUTOACTIVATE;
+		//+INVENTORY.AUTOACTIVATE;
 	}
 
 	override void DoEffect() {
 		super.DoEffect();
-		if(!SelfLight1) {
-			SelfLight1 = DarkDoomZ_Spotlight(Spawn("DarkDoomZ_Spotlight",(0,0,0),false));
-			SelfLight1.FollowTarget = owner;
-			SelfLight1.args[0] = 224; //R
-			SelfLight1.args[1] = 236; //G
-			SelfLight1.args[2] = 255; //B
-			SelfLight1.args[3] = 768; //Radius
-			SelfLight1.SpotInnerAngle = 5;
-			SelfLight1.SpotOuterAngle = 10;
+		if(Active) {
+			if(!SelfLight1) {
+				SelfLight1 = DarkDoomZ_Spotlight(Spawn("DarkDoomZ_Spotlight",owner.pos,false));
+				SelfLight1.FollowTarget = owner;
+				SelfLight1.args[0] = 255; //R
+				SelfLight1.args[1] = 241; //G
+				SelfLight1.args[2] = 224; //B
+				SelfLight1.args[3] = 768; //Radius
+				SelfLight1.SpotInnerAngle = 6;
+				SelfLight1.SpotOuterAngle = 12;
+				SelfLight1.angle = owner.angle;
+				SelfLight1.pitch = owner.pitch;
+			}
+			if(!SelfLight2) {
+				SelfLight2 = DarkDoomZ_Spotlight(Spawn("DarkDoomZ_Spotlight",owner.pos,false));
+				SelfLight2.FollowTarget = owner;
+				SelfLight2.args[0] = 191; //R
+				SelfLight2.args[1] = 181; //G
+				SelfLight2.args[2] = 168; //B
+				SelfLight2.args[3] = 384; //Radius
+				SelfLight2.SpotInnerAngle = 6;
+				SelfLight2.SpotOuterAngle = 48;
+				SelfLight2.angle = owner.angle;
+				SelfLight2.pitch = owner.pitch;
+			}
 		}
-		if(!SelfLight2) {
-			SelfLight2 = DarkDoomZ_Spotlight(Spawn("DarkDoomZ_Spotlight",(0,0,0),false));
-			SelfLight2.FollowTarget = owner;
-			SelfLight2.args[0] = 224; //R
-			SelfLight2.args[1] = 236; //G
-			SelfLight2.args[2] = 255; //B
-			SelfLight2.args[3] = 384; //Radius
-			SelfLight2.SpotInnerAngle = 10;
-			SelfLight2.SpotOuterAngle = 25;
-		}
-		if(!SelfLight3) {
-			SelfLight3 = DarkDoomZ_Spotlight(Spawn("DarkDoomZ_Spotlight",(0,0,0),false));
-			SelfLight3.FollowTarget = owner;
-			SelfLight3.args[0] = 224; //R
-			SelfLight3.args[1] = 236; //G
-			SelfLight3.args[2] = 255; //B
-			SelfLight3.args[3] = 192; //Radius
-			SelfLight3.SpotInnerAngle = 25;
-			SelfLight3.SpotOuterAngle = 60;
+		else {
+			if(SelfLight1) { SelfLight1.Destroy(); }
+			if(SelfLight2) { SelfLight2.Destroy(); }
 		}
 	}
 
 	States {
 	Spawn:
-		TNT1 A -1;
+		ROCK A -1;
 		stop;
 	Use:
-		TNT1 A 1;
+		TNT1 A 1 ToggleActive();
 		loop;
+	}
+
+	action void ToggleActive() {
+		if(invoker.Active) { invoker.Active = false; }
+		else { invoker.Active = true; }
 	}
 }
 
@@ -143,12 +155,12 @@ class DarkDoomZ_Spotlight : DynamicLight {
 		if(followTarget) {
 			vel.x += DampedSpring(pos.x, followTarget.pos.x,    vel.x, 0.75, 0.9);
 			vel.y += DampedSpring(pos.y, followTarget.pos.y,    vel.y, 0.75, 0.9);
-			vel.z += DampedSpring(pos.z, followTarget.pos.z+32, vel.z, 0.75, 0.9);
-			vela  += DampedSpring(angle, followTarget.angle,    vela,  0.25, 0.9);
-			velp  += DampedSpring(pitch, followTarget.pitch,    velp,  0.25, 0.9);
+			vel.z += DampedSpring(pos.z, followTarget.pos.z+32*followtarget.player.crouchfactor, vel.z, 0.75, 0.9);
+			vela  += DampedSpring(angle, followTarget.angle, vela, 0.25, 0.25);
+			velp  += DampedSpring(pitch, followTarget.pitch, velp, 0.25, 0.25);
 			setOrigin(pos + vel, true);
-			A_SetAngle(angle + vela, true);
-			A_SetPitch(pitch + velp, true);
+			A_SetAngle(angle + (vela/4), true);
+			A_SetPitch(pitch + (velp/4), true);
 		}
 	}
 
