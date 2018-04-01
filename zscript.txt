@@ -22,10 +22,15 @@ class DarkDoomZ_SectorLightAdjust : EventHandler {
 	bool IsSky;
 
 	override void WorldLoaded(WorldEvent e) {
+		ThinkerIterator it = ThinkerIterator.Create ("Lighting");
+		Lighting effect;
+		while (effect = Lighting (it.Next ())) { effect.Destroy (); }
+
 		BaseLightLevels.Clear();
 		for(int i = 0; i < Level.Sectors.Size(); i++) {
 			BaseLightlevels.Push(Level.Sectors[i].LightLevel);
 		}
+
 		ChangeLighting();
 	}
 
