@@ -28,6 +28,18 @@ OptionValue "Nice_Flashlight_Quality" {
 	1, "Fancy"
 }
 
+OptionValue "Nice_Flashlight_Type" {
+	0, "Cheap Incandescent"
+	1, "Midrange Halogen"
+	2, "Tactical White LED"
+}
+
+OptionValue "Nice_Flashlight_Position" {
+	0, "Handheld"
+	1, "Shoulder"
+	2, "Helmet"
+}
+
 AddOptionMenu "OptionsMenu" {
 	StaticText " "
 	Submenu "DarkDoomZ Settings", "Dark_Adjust"
@@ -41,6 +53,9 @@ OptionMenu "Dark_Adjust" {
 	Slider "Fine-tune","ddz_custom",-16,16,1,0
 	Option "Sky Sectors","ddz_skymode", "Nice_Sky_Modes"
 	StaticText " "
-	Option "Flashlight Quality","ddz_fl_quality", "Nice_Flashlight_Quality"
-	Control "Flashlight Toggle", "use DarkDoomZ_Flashlight"
+	StaticText "Flashlight Settings"
+	Option "Quality","ddz_fl_quality", "Nice_Flashlight_Quality"
+	Option "Type","ddz_fl_type", "Nice_Flashlight_Type"
+	Option "Position","ddz_fl_pos", "Nice_Flashlight_Position"
+	Control "Toggle Key", "use DarkDoomZ_Flashlight"
 }

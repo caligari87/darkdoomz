@@ -3,3 +3,5 @@ server int ddz_preset = 3;
 server int ddz_custom = 0;
 server int ddz_skymode = 2;
 server int ddz_fl_quality = 1;
+server int ddz_fl_type = 1;
+server int ddz_fl_pos = 0;

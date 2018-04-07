@@ -93,6 +93,14 @@ class DarkDoomZ_Flashlight : CustomInventory {
 	DarkDoomZ_Spotlight SelfLight1, SelfLight2;
 	bool Active;
 	int Quality,OldQuality;
+	int Type,OldType;
+	int Mount,OldMount;
+	int R,G,B;
+	int beamInner, beamOuter, beamRadius;
+	int spillInner, spillOuter, spillRadius;
+	double offsetAngle, offsetZ;
+	int inertia;
+	double spring, damping;
 
 	default {
 		//+INVENTORY.AUTOACTIVATE;
@@ -101,50 +109,131 @@ class DarkDoomZ_Flashlight : CustomInventory {
 	override void DoEffect() {
 		super.DoEffect();
 		Quality = CVar.GetCvar("ddz_fl_quality").GetInt();
+		Type = CVar.GetCvar("ddz_fl_type").GetInt();
+		Mount = CVar.GetCvar("ddz_fl_pos").GetInt();
 		if(Active) {
-			if(Quality != OldQuality) {
+			if(Quality != OldQuality ||
+			   Type != OldType ||
+			   Mount != OldMount) {
+
 				if(SelfLight1) { SelfLight1.Destroy(); }
 				if(SelfLight2) { SelfLight2.Destroy(); }
 			}
+
+			switch(Type) {
+				case 0: //Incandescent
+					R = 255;
+					G = 214;
+					B = 170;
+					beamInner = 0;
+					beamOuter = 25;
+					beamRadius = 384;
+					spillInner = 15;
+					spillOuter = 45;
+					spillRadius = 128;
+					break;
+				case 1: //Halogen
+					R = 255;
+					G = 241;
+					B = 224;
+					beamInner = 5;
+					beamOuter = 20;
+					beamRadius = 512;
+					spillInner = 10;
+					spillOuter = 60;
+					spillRadius = 256;
+					break;
+				case 2: //LED
+					R = 248;
+					G = 255;
+					B = 255;
+					beamInner = 10;
+					beamOuter = 15;
+					beamRadius = 640;
+					spillInner = 15;
+					spillOuter = 75;
+					spillRadius = 448;
+					break;
+			}
+
+			switch(Mount) {
+				case 0: //Handheld
+					spring = 0.25;
+					damping = 0.2;
+					inertia = 4;
+					offsetAngle = 0;
+					offsetZ = 32;
+					break;
+				case 1: //Shoulder
+					spring = 0.35;
+					damping = 0.75;
+					inertia = 2;
+					offsetAngle = 90;
+					offsetZ = 38;
+					break;
+				case 2: //Helmet
+					spring = 1;
+					damping = 1;
+					inertia = 1;
+					offsetAngle = 0;
+					offsetZ = 45;
+					break;
+			}
+
 			switch(Quality) {
 				case 0:
 					if(!SelfLight1) {
 						SelfLight1 = DarkDoomZ_Spotlight(Spawn("DarkDoomZ_Spotlight",owner.pos,false));
 						SelfLight1.FollowTarget = owner;
-						SelfLight1.args[0] = 255; //R
-						SelfLight1.args[1] = 241; //G
-						SelfLight1.args[2] = 224; //B
-						SelfLight1.args[3] = 448; //Radius
-						SelfLight1.SpotInnerAngle = 10;
-						SelfLight1.SpotOuterAngle = 30;
+						SelfLight1.args[0] = R; //R
+						SelfLight1.args[1] = G; //G
+						SelfLight1.args[2] = B; //B
+						SelfLight1.args[3] = (beamRadius + spillRadius) / 2; //Radius
+						SelfLight1.SpotInnerAngle = (beamInner + spillInner) / 2;
+						SelfLight1.SpotOuterAngle = (beamOuter + spillOuter) / 2;
 						SelfLight1.angle = owner.angle;
 						SelfLight1.pitch = owner.pitch;
+						SelfLight1.spring = spring;
+						SelfLight1.damping = damping;
+						SelfLight1.inertia = inertia;
+						SelfLight1.offsetAngle = offsetAngle;
+						SelfLight1.offsetZ = offsetZ;
 					}
 					break;
 				case 1:
 					if(!SelfLight1) {
 						SelfLight1 = DarkDoomZ_Spotlight(Spawn("DarkDoomZ_Spotlight",owner.pos,false));
 						SelfLight1.FollowTarget = owner;
-						SelfLight1.args[0] = 255; //R
-						SelfLight1.args[1] = 241; //G
-						SelfLight1.args[2] = 224; //B
-						SelfLight1.args[3] = 640; //Radius
-						SelfLight1.SpotInnerAngle = 8;
-						SelfLight1.SpotOuterAngle = 12;
+						SelfLight1.args[0] = R; //R
+						SelfLight1.args[1] = G; //G
+						SelfLight1.args[2] = B; //B
+						SelfLight1.args[3] = beamRadius; //Radius
+						SelfLight1.SpotInnerAngle = beamInner;
+						SelfLight1.SpotOuterAngle = beamOuter;
 						SelfLight1.angle = owner.angle;
 						SelfLight1.pitch = owner.pitch;
+						SelfLight1.spring = spring;
+						SelfLight1.damping = damping;
+						SelfLight1.inertia = inertia;
+						SelfLight1.offsetAngle = offsetAngle;
+						SelfLight1.offsetZ = offsetZ;
 					}
 					if(!SelfLight2) {
 						SelfLight2 = DarkDoomZ_Spotlight(Spawn("DarkDoomZ_Spotlight",owner.pos,false));
 						SelfLight2.FollowTarget = owner;
-						SelfLight2.args[0] = 191; //R
-						SelfLight2.args[1] = 181; //G
-						SelfLight2.args[2] = 168; //B
-						SelfLight2.args[3] = 384; //Radius
-						SelfLight2.SpotInnerAngle = 12;
-						SelfLight2.SpotOuterAngle = 48;
+						SelfLight2.args[0] = R * 0.75; //R
+						SelfLight2.args[1] = G * 0.75; //G
+						SelfLight2.args[2] = B * 0.75; //B
+						SelfLight2.args[3] = spillRadius; //Radius
+						SelfLight2.SpotInnerAngle = spillInner;
+						SelfLight2.SpotOuterAngle = spillOuter;
 						SelfLight2.angle = owner.angle;
 						SelfLight2.pitch = owner.pitch;
+						SelfLight2.spring = spring;
+						SelfLight2.damping = damping;
+						SelfLight2.inertia = inertia;
+						SelfLight2.offsetAngle = offsetAngle;
+						SelfLight2.offsetZ = offsetZ;
 					}
 					break;
 			}
@@ -154,6 +243,8 @@ class DarkDoomZ_Flashlight : CustomInventory {
 			if(SelfLight2) { SelfLight2.Destroy(); }
 		}
 		OldQuality = Quality;
+		OldType = Type;
+		OldMount = Mount;
 	}
 
 	States {
@@ -174,6 +265,10 @@ class DarkDoomZ_Flashlight : CustomInventory {
 class DarkDoomZ_Spotlight : DynamicLight {
 	actor FollowTarget;
 	double vela, velp;
+	double spring, damping;
+	double offsetAngle, offsetZ;
+	vector3 targetPos;
+	int inertia;
 
 	default {
 		DynamicLight.Type "Point";
@@ -183,14 +278,20 @@ class DarkDoomZ_Spotlight : DynamicLight {
 	override void Tick() {
 		super.Tick();
 		if(followTarget) {
-			vel.x += DampedSpring(pos.x, followTarget.pos.x,    vel.x, 0.75, 0.9);
-			vel.y += DampedSpring(pos.y, followTarget.pos.y,    vel.y, 0.75, 0.9);
-			vel.z += DampedSpring(pos.z, followTarget.pos.z+32*followtarget.player.crouchfactor, vel.z, 0.75, 0.9);
-			vela  += DampedSpring(angle, followTarget.angle, vela, 0.25, 0.25);
-			velp  += DampedSpring(pitch, followTarget.pitch, velp, 0.25, 0.25);
+			if(inertia == 0) inertia = 1;
+			targetpos = followTarget.vec3Angle(
+				6 * sin(offsetAngle),
+				followtarget.angle + offsetAngle,
+				offsetZ * followtarget.player.crouchfactor,
+				false);
+			vel.x += DampedSpring(pos.x, targetpos.x, vel.x, 1, 1);
+			vel.y += DampedSpring(pos.y, targetpos.y, vel.y, 1, 1);
+			vel.z += DampedSpring(pos.z, targetpos.z, vel.z, 1, 1);
+			vela  += DampedSpring(angle, followTarget.angle, vela, spring, damping);
+			velp  += DampedSpring(pitch, followTarget.pitch, velp, spring, damping);
 			setOrigin(pos + vel, true);
-			A_SetAngle(angle + (vela/4), true);
-			A_SetPitch(pitch + (velp/4), true);
+			A_SetAngle(angle + (vela / inertia), true);
+			A_SetPitch(pitch + (velp / inertia), true);
 		}
 	}
 
