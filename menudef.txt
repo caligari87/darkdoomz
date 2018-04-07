@@ -36,8 +36,9 @@ OptionValue "Nice_Flashlight_Type" {
 
 OptionValue "Nice_Flashlight_Position" {
 	0, "Handheld"
-	1, "Shoulder"
-	2, "Helmet"
+	1, "Left Shoulder"
+	2, "Right Shoulder"
+	3, "Helmet"
 }
 
 AddOptionMenu "OptionsMenu" {
