@@ -168,14 +168,14 @@ class DarkDoomZ_Flashlight : CustomInventory {
 					spring = 0.35;
 					damping = 0.75;
 					inertia = 2;
-					offsetAngle = 90;
+					offsetAngle = 80;
 					offsetZ = 36;
 					break;
 				case 2: //Right Shoulder
 					spring = 0.35;
 					damping = 0.75;
 					inertia = 2;
-					offsetAngle = -90;
+					offsetAngle = -80;
 					offsetZ = 36;
 					break;
 				case 3: //Helmet
@@ -287,7 +287,7 @@ class DarkDoomZ_Spotlight : DynamicLight {
 		if(followTarget) {
 			if(inertia == 0) inertia = 1;
 			targetpos = followTarget.vec3Angle(
-				6 * abs(sin(offsetAngle)),
+				2 + (6 * abs(sin(offsetAngle))),
 				followtarget.angle + offsetAngle,
 				offsetZ * followtarget.player.crouchfactor,
 				false);
