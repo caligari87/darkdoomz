@@ -11,6 +11,19 @@ A settings menu is provided to adjust the effect. The following settings are ava
 * **Fine-Tune** - Adjust the preset darkness setting by +/-16 units.
 * **Sky Sectors** - Adjust how much effect is applied to sectors with a sky (full, half, or none)
 
+There is also a flashlight available, with the following settings:
+
+* **Quality** - "Simple" (single light) or "Fancy" (spot and spill lights) depending on what your computer can handle.
+* **Type** - Preset light styles, such as "Cheap Incandescent" or "White LED". The brighter options may negatively affect performance.
+  * **Cheap Incandescent**
+  * **Midrange Halogen**
+  * **White LED**
+* **Position** - Where the light is relative to the player and how it moves.
+  * **Handheld** - Loose springy following style, from below the viewpoint.
+  * **Left / Right Shoulder** - Tighter following, offset to the side of the viewpoint.
+  * **Helmet** - Very tight following, above viewpoint
+* **Toggle Key** - Customizable hotkey to enable/disable the flashlight.
+
 ## Notes
 
 * Presets equivalent to DarkDoom are only intended for subtractive mode. Results will vary with other adjustment modes.
