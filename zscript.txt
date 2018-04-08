@@ -154,6 +154,17 @@ class DarkDoomZ_Flashlight : CustomInventory {
 					spillOuter = 75;
 					spillRadius = 256;
 					break;
+				case 3: //Red filter
+					R = 192;
+					G = 36;
+					B = 34;
+					beamInner = 5;
+					beamOuter = 20;
+					beamRadius = 256;
+					spillInner = 10;
+					spillOuter = 60;
+					spillRadius = 128;
+					break;
 			}
 
 			switch(Mount) {

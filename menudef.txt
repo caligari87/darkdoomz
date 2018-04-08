@@ -32,6 +32,7 @@ OptionValue "Nice_Flashlight_Type" {
 	0, "Cheap Incandescent"
 	1, "Midrange Halogen"
 	2, "White LED"
+	3, "Red Filter"
 }
 
 OptionValue "Nice_Flashlight_Position" {
