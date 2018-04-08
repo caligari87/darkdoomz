@@ -13,11 +13,14 @@ A settings menu is provided to adjust the effect. The following settings are ava
 
 There is also a flashlight available, with the following settings:
 
-* **Quality** - "Simple" (single light) or "Fancy" (spot and spill lights) depending on what your computer can handle.
-* **Type** - Preset light styles, such as "Cheap Incandescent" or "White LED". The brighter options may negatively affect performance.
-  * **Cheap Incandescent**
-  * **Midrange Halogen**
-  * **White LED**
+* **Quality**
+  * **Simple** - Single spot light using the average spread/intensity of the fancy lights.
+  * **Fancy** - Two spot lights to simulate both focused beam and light spill.
+* **Type** - Preset light styles. The brighter options may negatively affect performance.
+  * **Cheap Incandescent** - Dim warm bulb with a wide beam and little spill.
+  * **Midrange Halogen** - Moderately bright, focused beam with large spill.
+  * **White LED** - Very bright focused beam, very wide shallow spill
+  * **Red Filter** - Dim, nightvision-preserving light, same spread as the halogen.
 * **Position** - Where the light is relative to the player and how it moves.
   * **Handheld** - Loose springy following style, from below the viewpoint.
   * **Left / Right Shoulder** - Tighter following, offset to the side of the viewpoint.
