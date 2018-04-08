@@ -141,7 +141,7 @@ class DarkDoomZ_Flashlight : CustomInventory {
 					beamRadius = 512;
 					spillInner = 10;
 					spillOuter = 60;
-					spillRadius = 256;
+					spillRadius = 384;
 					break;
 				case 2: //LED
 					R = 248;
@@ -152,7 +152,7 @@ class DarkDoomZ_Flashlight : CustomInventory {
 					beamRadius = 640;
 					spillInner = 15;
 					spillOuter = 75;
-					spillRadius = 448;
+					spillRadius = 256;
 					break;
 			}
 
