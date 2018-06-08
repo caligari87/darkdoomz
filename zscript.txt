@@ -203,10 +203,10 @@ class DarkDoomZ_Flashlight : CustomInventory {
 					if(!SelfLight1) {
 						SelfLight1 = DarkDoomZ_Spotlight(Spawn("DarkDoomZ_Spotlight",owner.pos,false));
 						SelfLight1.FollowTarget = owner;
-						SelfLight1.args[0] = R; //R
-						SelfLight1.args[1] = G; //G
-						SelfLight1.args[2] = B; //B
-						SelfLight1.args[3] = (beamRadius + spillRadius) / 2; //Radius
+						SelfLight1.args[DynamicLight.LIGHT_RED] = R; //R
+						SelfLight1.args[DynamicLight.LIGHT_GREEN] = G; //G
+						SelfLight1.args[DynamicLight.LIGHT_BLUE] = B; //B
+						SelfLight1.args[DynamicLight.LIGHT_INTENSITY] = (beamRadius + spillRadius) / 2; //Radius
 						SelfLight1.SpotInnerAngle = (beamInner + spillInner) / 2;
 						SelfLight1.SpotOuterAngle = (beamOuter + spillOuter) / 2;
 						SelfLight1.angle = owner.angle;
@@ -222,10 +222,10 @@ class DarkDoomZ_Flashlight : CustomInventory {
 					if(!SelfLight1) {
 						SelfLight1 = DarkDoomZ_Spotlight(Spawn("DarkDoomZ_Spotlight",owner.pos,false));
 						SelfLight1.FollowTarget = owner;
-						SelfLight1.args[0] = R; //R
-						SelfLight1.args[1] = G; //G
-						SelfLight1.args[2] = B; //B
-						SelfLight1.args[3] = beamRadius; //Radius
+						SelfLight1.args[DynamicLight.LIGHT_RED] = R; //R
+						SelfLight1.args[DynamicLight.LIGHT_GREEN] = G; //G
+						SelfLight1.args[DynamicLight.LIGHT_BLUE] = B; //B
+						SelfLight1.args[DynamicLight.LIGHT_INTENSITY] = beamRadius; //Radius
 						SelfLight1.SpotInnerAngle = beamInner;
 						SelfLight1.SpotOuterAngle = beamOuter;
 						SelfLight1.angle = owner.angle;
@@ -239,10 +239,10 @@ class DarkDoomZ_Flashlight : CustomInventory {
 					if(!SelfLight2) {
 						SelfLight2 = DarkDoomZ_Spotlight(Spawn("DarkDoomZ_Spotlight",owner.pos,false));
 						SelfLight2.FollowTarget = owner;
-						SelfLight2.args[0] = R * 0.75; //R
-						SelfLight2.args[1] = G * 0.75; //G
-						SelfLight2.args[2] = B * 0.75; //B
-						SelfLight2.args[3] = spillRadius; //Radius
+						SelfLight2.args[DynamicLight.LIGHT_RED] = R * 0.75; //R
+						SelfLight2.args[DynamicLight.LIGHT_GREEN] = G * 0.75; //G
+						SelfLight2.args[DynamicLight.LIGHT_BLUE] = B * 0.75; //B
+						SelfLight2.args[DynamicLight.LIGHT_INTENSITY] = spillRadius; //Radius
 						SelfLight2.SpotInnerAngle = spillInner;
 						SelfLight2.SpotOuterAngle = spillOuter;
 						SelfLight2.angle = owner.angle;
