@@ -136,7 +136,7 @@ class DarkDoomZ_Flashlight : CustomInventory {
 					R = 255;
 					G = 241;
 					B = 224;
-					beamInner = 5;
+					beamInner = 0;
 					beamOuter = 20;
 					beamRadius = 512;
 					spillInner = 10;
@@ -147,7 +147,7 @@ class DarkDoomZ_Flashlight : CustomInventory {
 					R = 248;
 					G = 255;
 					B = 255;
-					beamInner = 10;
+					beamInner = 0;
 					beamOuter = 15;
 					beamRadius = 640;
 					spillInner = 15;
@@ -158,7 +158,7 @@ class DarkDoomZ_Flashlight : CustomInventory {
 					R = 192;
 					G = 36;
 					B = 34;
-					beamInner = 5;
+					beamInner = 0;
 					beamOuter = 20;
 					beamRadius = 256;
 					spillInner = 10;
