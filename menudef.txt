@@ -55,6 +55,12 @@ OptionMenu "Dark_Adjust" {
 	Slider "Fine-tune","ddz_custom",-16,16,1,0
 	Option "Sky Sectors","ddz_skymode", "Nice_Sky_Modes"
 	StaticText " "
+
+	StaticText "Fog Settings (OpenGL)"
+	Option "$GLPREFMNU_FOGMODE", gl_fogmode, "FogMode"
+	Slider "Fog Density", ddz_fog, 0,512,8,0
+	StaticText " "
+
 	StaticText "Flashlight Settings"
 	Option "Quality","ddz_fl_quality", "Nice_Flashlight_Quality"
 	Option "Type","ddz_fl_type", "Nice_Flashlight_Type"
