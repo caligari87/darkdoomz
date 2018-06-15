@@ -305,7 +305,7 @@ class DarkDoomZ_Spotlight : DynamicLight {
 			vel.x += DampedSpring(pos.x, targetpos.x, vel.x, 1, 1);
 			vel.y += DampedSpring(pos.y, targetpos.y, vel.y, 1, 1);
 			vel.z += DampedSpring(pos.z, targetpos.z, vel.z, 1, 1);
-			vela  += DampedSpring(angle, followTarget.angle, vela, spring, damping);
+			vela  += DampedSpring(angle, angle - deltaangle(followTarget.angle, angle), vela, spring, damping);
 			velp  += DampedSpring(pitch, followTarget.pitch, velp, spring, damping);
 			setOrigin(pos + vel, true);
 			A_SetAngle(angle + (vela / inertia), true);
