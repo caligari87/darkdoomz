@@ -12,3 +12,6 @@
 
 # Testing
 * Fort of Hard Knox, a1337spy, Orange Bomb: Multiplayer flashlight testing in Hideous Destructor
+
+# Graphics
+* Lud: Nice logo for DarkDoomZ
