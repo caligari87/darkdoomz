@@ -104,7 +104,7 @@ class DarkDoomZ_Flashlight : CustomInventory {
 	double spring, damping;
 
 	default {
-		//+INVENTORY.AUTOACTIVATE;
+		+INVENTORY.PERSISTENTPOWER;
 	}
 
 	override void DoEffect() {
