@@ -16,8 +16,8 @@ version "3.4"
 //Courtesy FishyClockwork, with modifications by Caligari87
 class DarkDoomZ_SectorLightAdjust : EventHandler {
 	Array<int> BaseLightLevels;
-	int Mode,Preset,Custom,SkyMode,FogDensity;
-	int OldMode,OldPreset,OldCustom,OldSkyMode,OldFogDensity;
+	int Mode,Preset,Custom,SkyMode,FogDensity, MinLight;
+	int OldMode,OldPreset,OldCustom,OldSkyMode,OldFogDensity, OldMinLight;
 	int BaseAdjustment, FinalAdjustment;
 	bool IsSky;
 
@@ -58,12 +58,14 @@ class DarkDoomZ_SectorLightAdjust : EventHandler {
 		Custom = CVar.GetCvar("ddz_custom").GetInt();
 		SkyMode = CVar.GetCvar("ddz_skymode").GetInt();
 		FogDensity = CVar.GetCvar("ddz_fog").GetInt();
+		MinLight = CVar.GetCvar("ddz_minlight").GetInt();
 
 		if(OldMode != Mode ||
 		   OldPreset != Preset ||
 		   OldCustom != Custom ||
 		   OldSkyMode != Skymode ||
-		   OldFogDensity != FogDensity) {
+		   OldFogDensity != FogDensity ||
+		   OldMinLight != MinLight) {
 
 			BaseAdjustment = clamp((32*Preset)-Custom,0,256);
 			for(int i = 0; i < BaseLightLevels.Size(); i++) {
@@ -87,6 +89,8 @@ class DarkDoomZ_SectorLightAdjust : EventHandler {
 						Level.Sectors[i].Lightlevel = BaseLightLevels[i]; //reset lightlevels
 						break;
 				}
+
+				Level.Sectors[i].Lightlevel = max(Level.Sectors[i].Lightlevel, MinLight);
 
 				if(IsSky) FogDensity *= (0.5 * SkyMode);
 				level.Sectors[i].SetFogDensity(FogDensity);

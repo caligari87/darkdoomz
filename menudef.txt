@@ -42,6 +42,11 @@ OptionValue "Nice_Flashlight_Position" {
 	3, "Helmet"
 }
 
+OptionValue "Nice_MinLight_Level" {
+	0, "Off"
+	1, "On"
+}
+
 AddOptionMenu "OptionsMenu" {
 	StaticText " "
 	Submenu "DarkDoomZ Settings", "Dark_Adjust"
@@ -54,6 +59,7 @@ OptionMenu "Dark_Adjust" {
 	Option "Setting","ddz_preset", "Nice_Settings"
 	Slider "Fine-tune","ddz_custom",-16,16,1,0
 	Option "Sky Sectors","ddz_skymode", "Nice_Sky_Modes"
+	Option "Prevent Zero Lightlevel", "ddz_minlight", "Nice_MinLight_Level"
 	StaticText " "
 
 	StaticText "Fog Settings (OpenGL)"
