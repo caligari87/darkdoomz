@@ -67,7 +67,7 @@ class DarkDoomZ_SectorLightAdjust : EventHandler {
 		   OldFogDensity != FogDensity ||
 		   OldMinLight != MinLight) {
 
-			BaseAdjustment = clamp((32*Preset)-Custom,0,256);
+			BaseAdjustment = clamp((32 * Preset) - Custom, 0, 256);
 			for(int i = 0; i < BaseLightLevels.Size(); i++) {
 				IsSky = (level.Sectors[i].GetTexture(0) == skyflatnum ||
 						 level.Sectors[i].GetTexture(1) == skyflatnum);
@@ -80,10 +80,10 @@ class DarkDoomZ_SectorLightAdjust : EventHandler {
 						Level.Sectors[i].Lightlevel = BaseLightLevels[i] - FinalAdjustment;
 						break;
 					case 2: //linear compression
-						Level.Sectors[i].Lightlevel = BaseLightLevels[i] * (1.0-FinalAdjustment/256.0);
+						Level.Sectors[i].Lightlevel = BaseLightLevels[i] * (1.0 - FinalAdjustment / 256.0);
 						break;
 					case 3: //clamp max brightness level
-						Level.Sectors[i].Lightlevel = clamp(BaseLightLevels[i],0,256-FinalAdjustment);
+						Level.Sectors[i].Lightlevel = clamp(BaseLightLevels[i], 0, 256 - FinalAdjustment);
 						break;
 					default: //disable
 						Level.Sectors[i].Lightlevel = BaseLightLevels[i]; //reset lightlevels
