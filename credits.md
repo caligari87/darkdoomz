@@ -6,6 +6,7 @@
 * Gutawer: Code template for per-sector iteration
 * FishyClockwork: Lighting adjustment code
 * phantombeta, Marisa Kirisame: Sector light effect removal suggestion and code
+* Lud: Iterator for extraneous actor removal
 
 # Sounds
 * mshahen: "Flashlight On/Off Clicks" (freesound.org, 271109, modified) CC BY 3.0
