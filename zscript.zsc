@@ -32,6 +32,11 @@ class DarkDoomZ_SectorLightAdjust : EventHandler {
 		}
 
 		ChangeLighting();
+
+		if(e.isReopen) {
+			let iterator = ThinkerIterator.Create("DarkDoomZ_Spotlight");
+			for (Thinker mo; (mo = iterator.Next());) { mo.Destroy(); }
+		}
 	}
 
 	override void PlayerEntered(PlayerEvent e) {
