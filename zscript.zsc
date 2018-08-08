@@ -1,18 +1,5 @@
 version "3.5"
 
-//Looked to Fancy World by Kinsie for how to do this
-//Code template by Gutawer
-/*Class SectorLightAdjust : EventHandler {
-	override void WorldLoaded(WorldEvent e) {
-		for (int i = 0; i < level.Sectors.Size(); i++) {
-			level.Sectors[i].lightlevel /= CVar.GetCVar('darken_factor').GetInt();
-		}
-		for (int i = 0; i < level.Sides.Size(); i++) {
-			level.Sides[i].light /= CVar.GetCVar('darken_factor').GetInt();
-		}
-	}
-}*/
-
 //Courtesy FishyClockwork, with modifications by Caligari87
 class DarkDoomZ_SectorLightAdjust : EventHandler {
 	Array<int> BaseLightLevels;
