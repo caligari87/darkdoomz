@@ -9,8 +9,7 @@ A settings menu is provided to adjust the effect. The following settings are ava
   * **Compress** - Applies a linear range commpression, so the light levels don't bottom out as quickly.
   * A third adjustment mode is available by setting `ddz_mode` to `3` in the console. This simply clamps the maximum brightness level without lowering darker sectors. Not exposed in the menu because it doesn't really mesh with the available presets.
 * **Fine-Tune** - Adjust the preset darkness setting by +/-16 units.
-* **Prevent Zero Lightlevel** - Prevents the sector light from dropping below 1. Visually doesn't do much.
-
+* **Minimum Lightlevel** - Clamps the minimum light level for both "Subtract" and "Compress" modes.
 * **Sky Sectors** - Adjust how much effect is applied to sectors with a sky (full, half, or none)
 
 There is also a flashlight available, with the following settings:

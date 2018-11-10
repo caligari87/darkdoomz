@@ -53,8 +53,8 @@ OptionMenu "Dark_Adjust" {
 	Option "Mode","ddz_mode","Nice_Modes"
 	Option "Setting","ddz_preset", "Nice_Settings"
 	Slider "Fine-tune","ddz_custom",-16,16,1,0
-	Option "Sky Sectors","ddz_skymode", "Nice_Sky_Modes"
 	Slider "Minimum Lightlevel","ddz_minlight",0,16,1,0
+	Option "Sky Sectors","ddz_skymode", "Nice_Sky_Modes"
 	StaticText " "
 
 	StaticText "Fog Settings (OpenGL)"
