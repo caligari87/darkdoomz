@@ -1,4 +1,4 @@
-version "3.5"
+version "3.6"
 
 //Courtesy FishyClockwork, with modifications by Caligari87
 class DarkDoomZ_SectorLightAdjust : EventHandler {
