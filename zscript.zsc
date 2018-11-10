@@ -54,7 +54,7 @@ class DarkDoomZ_SectorLightAdjust : EventHandler {
 		   OldFogDensity != FogDensity ||
 		   OldMinLight != MinLight) {
 
-			BaseAdjustment = clamp((32 * Preset) - Custom, 0, 256);
+			BaseAdjustment = clamp((32 * Preset) - Custom, MinLight, 256);
 			for(int i = 0; i < BaseLightLevels.Size(); i++) {
 				IsSky = (level.Sectors[i].GetTexture(0) == skyflatnum ||
 						 level.Sectors[i].GetTexture(1) == skyflatnum);
