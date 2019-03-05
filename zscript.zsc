@@ -297,7 +297,7 @@ class DarkDoomZ_Spotlight : DynamicLight {
 	}
 	override void Tick() {
 		super.Tick();
-		if(followTarget) {
+		if(followTarget && followTarget.player) {
 			if(inertia == 0) inertia = 1;
 			targetpos = followTarget.vec3Angle(
 				2 + (6 * abs(sin(offsetAngle))),
