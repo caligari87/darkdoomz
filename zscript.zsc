@@ -40,12 +40,12 @@ class DarkDoomZ_SectorLightAdjust : EventHandler {
 	}
 
 	void ChangeLighting() {
-		Mode = CVar.GetCvar("ddz_mode").GetInt();
-		Preset = CVar.GetCvar("ddz_preset").GetInt();
-		Custom = CVar.GetCvar("ddz_custom").GetInt();
-		SkyMode = CVar.GetCvar("ddz_skymode").GetInt();
-		FogDensity = CVar.GetCvar("ddz_fog").GetInt();
-		MinLight = CVar.GetCvar("ddz_minlight").GetInt();
+		Mode = ddz_mode;
+		Preset = ddz_preset;
+		Custom = ddz_custom;
+		SkyMode = ddz_skymode;
+		FogDensity = ddz_fog;
+		MinLight = ddz_minlight;
 
 		if(OldMode != Mode ||
 		   OldPreset != Preset ||
