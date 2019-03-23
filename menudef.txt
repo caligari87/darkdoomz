@@ -58,6 +58,7 @@ OptionMenu "Dark_Adjust" {
 	//Slider "Fine-tune","ddz_custom",-16,16,1,0
 	Slider "Min. Lightlevel","ddz_minlight",0,16,1,0
 	Option "Sky Sectors","ddz_skymode", "Nice_Sky_Modes"
+	Option "Sector Effects", "ddz_lighting", "OnOff"
 	StaticText " "
 
 	StaticText "Fog Settings (OpenGL)"
@@ -71,4 +72,10 @@ OptionMenu "Dark_Adjust" {
 	Option "Position","ddz_fl_pos", "Nice_Flashlight_Position"
 	Control "Toggle Key", "use DarkDoomZ_Flashlight"
 	StaticText " "
+
+	StaticText "Enabling or disabling sector effects", "grey"
+	StaticText "requires reloading the game or map.", "grey"
+	StaticText " "
+	StaticText "Classic DarkDoom modes", "grey"
+	StaticText "override regular setting.", "grey"
 }
