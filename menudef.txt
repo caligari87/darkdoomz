@@ -1,6 +1,6 @@
 OptionValue "Nice_Modes" {
 	0, "Disable"
-	1, "Subtract - DarkDoom"
+	1, "Subtract"
 	2, "Compress"
 	//3, "Clamp"
 }
@@ -9,12 +9,22 @@ OptionValue "Nice_Settings" {
 	//0, "Disable"
 	1, "Dim"
 	2, "Murky"
-	3, "Dismal - DarkDoom Lite"
-	4, "Oppressive - DarkDoom Classic"
+	3, "Dismal"
+	4, "Oppressive"
 	5, "Inky"
 	6, "Stygian"
 	7, "Pitch"
-	8, "Pure - DarkDoom Black"
+	8, "Pure"
+}
+
+OptionValue "Nice_Modes_DarkDoom" {
+	1, "Yes"
+}
+
+OptionValue "Nice_Settings_DarkDoom" {
+	3, "Lite"
+	4, "Classic"
+	8, "Black"
 }
 
 OptionValue "Nice_Sky_Modes" {
@@ -55,6 +65,11 @@ OptionMenu "Dark_Adjust" {
 	Slider "Fine-tune","ddz_custom",-16,16,1,0
 	Slider "Minimum Lightlevel","ddz_minlight",0,16,1,0
 	Option "Sky Sectors","ddz_skymode", "Nice_Sky_Modes"
+	StaticText " "
+
+	StaticText "DarkDoom Classic"
+	Option "Enabled", "ddz_mode", "Nice_Modes_DarkDoom"
+	Option "Setting", "ddz_preset", "Nice_Settings_DarkDoom"
 	StaticText " "
 
 	StaticText "Fog Settings (OpenGL)"
