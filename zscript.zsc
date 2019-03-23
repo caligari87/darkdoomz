@@ -72,6 +72,15 @@ class DarkDoomZ_SectorLightAdjust : EventHandler {
 					case 3: //clamp max brightness level
 						Level.Sectors[i].Lightlevel = clamp(BaseLightLevels[i], 0, 256 - FinalAdjustment);
 						break;
+					case 10: //DarkDoom Lite
+						Level.Sectors[i].Lightlevel = BaseLightLevels[i] - 96;
+						break;
+					case 11: //DarkDoom Classic
+						Level.Sectors[i].Lightlevel = BaseLightLevels[i] - 128;
+						break;
+					case 12: //DarkDoom Black
+						Level.Sectors[i].Lightlevel = BaseLightLevels[i] - 256;
+						break;
 					default: //disable
 						Level.Sectors[i].Lightlevel = BaseLightLevels[i]; //reset lightlevels
 						break;
