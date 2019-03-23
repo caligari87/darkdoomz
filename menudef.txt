@@ -55,7 +55,7 @@ OptionMenu "Dark_Adjust" {
 
 	Option "Mode","ddz_mode","Nice_Modes"
 	Option "Setting","ddz_preset", "Nice_Settings"
-	Slider "Fine-tune","ddz_custom",-16,16,1,0
+	//Slider "Fine-tune","ddz_custom",-16,16,1,0
 	Slider "Min. Lightlevel","ddz_minlight",0,16,1,0
 	Option "Sky Sectors","ddz_skymode", "Nice_Sky_Modes"
 	StaticText " "
@@ -70,4 +70,5 @@ OptionMenu "Dark_Adjust" {
 	Option "Type","ddz_fl_type", "Nice_Flashlight_Type"
 	Option "Position","ddz_fl_pos", "Nice_Flashlight_Position"
 	Control "Toggle Key", "use DarkDoomZ_Flashlight"
+	StaticText " "
 }
