@@ -3,14 +3,18 @@ This simple mutator/add-on re-implements the concept behind SidDoyle's Dark Doom
 
 A settings menu is provided to adjust the effect. The following settings are available:
 
-* **Preset** - Eight pre-set lighting levels in 32-unit increments. Equivalents to DarkDoom Lite, Classic, and Black are noted.
-* **Mode** - Two adjustment modes are available:
+* **Mode** - Several adjustment modes are available:
   * **Subtract** - Simply subtracts from the light level. This mimics DarkDoom's method.
   * **Compress** - Applies a linear range commpression, so the light levels don't bottom out as quickly.
-  * A third adjustment mode is available by setting `ddz_mode` to `3` in the console. This simply clamps the maximum brightness level without lowering darker sectors. Not exposed in the menu because it doesn't really mesh with the available presets.
-* **Fine-Tune** - Adjust the preset darkness setting by +/-16 units.
-* **Minimum Lightlevel** - Clamps the minimum light level for both "Subtract" and "Compress" modes.
+  * **Clamp** - Clamps the maximum brightness level without lowering darker sectors.
+  * **DarkDoom** - Three additional modes to emulate classic DarkDoom. These override the preset darkening settings.
+  * **Preset** - Eight pre-set lighting levels in 32-unit increments.
+* **Min. Lightlevel** - Clamps the minimum light level for both "Subtract" and "Compress" modes.
 * **Sky Sectors** - Adjust how much effect is applied to sectors with a sky (full, half, or none)
+* **Sector Effects** - Enables or disables sector light effects (flicker, pulse, etc). Requires a restart of the map.
+
+* **Fog Mode** - Alias to GZDoom's built-in light fade setting.
+* **Fog Density** - Overrides the default light fade intensity. Can make maps really dark at a distance even in brighter areas.
 
 There is also a flashlight available, with the following settings:
 
@@ -18,17 +22,12 @@ There is also a flashlight available, with the following settings:
   * **Simple** - Single spot light using the average spread/intensity of the fancy lights.
   * **Fancy** - Two spot lights to simulate both focused beam and light spill.
 * **Type** - Preset light styles. The brighter options may negatively affect performance.
-  * **Cheap Incandescent** - Dim warm bulb with a wide beam and little spill.
-  * **Midrange Halogen** - Moderately bright, focused beam with large spill.
-  * **White LED** - Very bright focused beam, very wide shallow spill
+  * **Incandescent** - Dim warm bulb with a wide beam and little spill.
+  * **Halogen** - Moderately bright, focused beam with large spill.
+  * **LED** - Very bright focused beam, very wide shallow spill
   * **Red Filter** - Dim, nightvision-preserving light, same spread as the halogen.
 * **Position** - Where the light is relative to the player and how it moves.
   * **Handheld** - Loose springy following style, from below the viewpoint.
   * **Left / Right Shoulder** - Tighter following, offset to the side of the viewpoint.
   * **Helmet** - Very tight following, above viewpoint
 * **Toggle Key** - Customizable hotkey to enable/disable the flashlight.
-
-## Notes
-
-* Presets equivalent to DarkDoom are only intended for subtractive mode. Results will vary with other adjustment modes.
-* Sectors modified with ACS or lighting specials may not be properly adjusted. Likewise, mods which rely on checking sector light levels may work differently (or break).
