@@ -3,8 +3,8 @@ version "3.6"
 //Courtesy FishyClockwork, with modifications by Caligari87
 class DarkDoomZ_SectorLightAdjust : EventHandler {
 	Array<int> BaseLightLevels;
-	int Mode,Preset,Custom,SkyMode,FogDensity, MinLight;
-	int OldMode,OldPreset,OldCustom,OldSkyMode,OldFogDensity, OldMinLight;
+	int Mode, Preset, Custom, SkyMode, FogDensity, MinLight;
+	int OldMode, OldPreset, OldCustom, OldSkyMode, OldFogDensity, OldMinLight;
 	int BaseAdjustment, FinalAdjustment;
 	bool IsSky;
 
