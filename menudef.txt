@@ -2,7 +2,7 @@ OptionValue "Nice_Modes" {
 	0, "Disable"
 	1, "Subtract"
 	2, "Compress"
-	//3, "Clamp"
+	3, "Clamp"
 }
 
 OptionValue "Nice_Settings" {
