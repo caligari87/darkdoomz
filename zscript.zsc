@@ -99,6 +99,8 @@ class DarkDoomZ_SectorLightAdjust : EventHandler {
 		OldPreset = Preset;
 		OldCustom = Custom;
 		OldSkyMode = SkyMode;
+		OldFogDensity = FogDensity;
+		OldMinLight = MinLight;
 	}
 }
 
