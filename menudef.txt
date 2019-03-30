@@ -3,13 +3,14 @@ OptionValue "Nice_Modes" {
 	1, "Subtract"
 	2, "Compress"
 	3, "Clamp"
+	4, "Crush"
 	10, "DarkDoom Lite"
 	11, "DarkDoom Classic"
 	12, "DarkDoom Black"
 }
 
 OptionValue "Nice_Settings" {
-	//0, "Disable"
+	0, "Disable"
 	1, "Dim"
 	2, "Murky"
 	3, "Dismal"
