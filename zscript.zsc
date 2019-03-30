@@ -66,6 +66,8 @@ class DarkDoomZ_SectorLightAdjust : EventHandler {
 				FinalAdjustment = BaseAdjustment;
 				if(IsSky) FinalAdjustment *= (0.5 * SkyMode);
 
+				// Link to graphing calculator depiction of different modes
+				// https://www.desmos.com/calculator/iphz6pi8yj
 				switch(Mode) {
 					case 1: //subtract raw light level (simple fade)
 						Level.Sectors[i].Lightlevel = BaseLightLevels[i] - FinalAdjustment;
@@ -76,13 +78,14 @@ class DarkDoomZ_SectorLightAdjust : EventHandler {
 					case 3: //clamp max brightness level
 						Level.Sectors[i].Lightlevel = clamp(BaseLightLevels[i], 0, 256 - FinalAdjustment);
 						break;
-					case 10: //DarkDoom Lite
+					case 4: //
+					case 10: //DarkDoom Lite (fixed subtract mode)
 						Level.Sectors[i].Lightlevel = BaseLightLevels[i] - 96;
 						break;
-					case 11: //DarkDoom Classic
+					case 11: //DarkDoom Classic (fixed subtract mode)
 						Level.Sectors[i].Lightlevel = BaseLightLevels[i] - 128;
 						break;
-					case 12: //DarkDoom Black
+					case 12: //DarkDoom Black (fixed subtract mode)
 						Level.Sectors[i].Lightlevel = BaseLightLevels[i] - 256;
 						break;
 					default: //disable
