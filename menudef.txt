@@ -48,35 +48,67 @@ OptionValue "Nice_Flashlight_Position" {
 
 AddOptionMenu "OptionsMenu" {
 	StaticText " "
-	Submenu "DarkDoomZ Settings", "Dark_Adjust"
+	Submenu "DarkDoomZ Settings", "DarkDoomZ_Settings"
 }
 
-OptionMenu "Dark_Adjust" {
+OptionMenu "DarkDoomZ_Settings" {
 	Title "DarkDoomZ Settings"
+	StaticText " "
 
 	Option "Mode","ddz_mode","Nice_Modes"
 	Option "Setting","ddz_preset", "Nice_Settings"
-	//Slider "Fine-tune","ddz_custom",-16,16,1,0
-	Slider "Min. Lightlevel","ddz_minlight",0,16,1,0
-	Option "Sky Sectors","ddz_skymode", "Nice_Sky_Modes"
-	Option "Sector Effects", "ddz_lighting", "OnOff"
 	StaticText " "
 
-	StaticText "Fog Settings (OpenGL)"
+	Submenu "Advanced Settings", "DarkDoomZ_Advanced_Settings"
+	Submenu "Fog Settings", "DarkDoomZ_Fog_Settings"
+	Submenu "Flashlight Settings", "DarkDoomZ_Flashlight_Settings"
+	StaticText " "
+
+	StaticText "Classic DarkDoom modes", "darkgrey"
+	StaticText "override regular setting.", "darkgrey"
+	StaticText " "
+}
+
+OptionMenu "DarkDoomZ_Advanced_Settings" {
+	Title "Advanced Settings"
+	StaticText " "
+
+	Slider "Fine-tune","ddz_custom",-16,16,1,0
+	StaticText "Fine adjustment for lightlevel preset.", "darkgrey"
+	StaticText " "
+
+	Slider "Min. Lightlevel","ddz_minlight",0,16,1,0
+	StaticText "Clamps darkest lightlevel to this minimum.", "darkgrey"
+	StaticText " "
+
+	Option "Sky Sectors","ddz_skymode", "Nice_Sky_Modes"
+	StaticText "Specifies whether adjustment applies", "darkgrey"
+	StaticText "to sky sectors. Note certain skyboxes", "darkgrey"
+	StaticText "may still be affected.", "darkgrey"
+	StaticText " "
+
+	Option "Sector Effects", "ddz_lighting", "OnOff"
+	StaticText "Enables or disables sector light effects", "darkgrey"
+	StaticText "such as flickering or pusling. Requires", "darkgrey"
+	StaticText "reloading the game or map.", "darkgrey"
+
+}
+
+OptionMenu "DarkDoomZ_Fog_Settings" {
+	Title "Fog Settings"
+	StaticText "-- OpenGL only --", "grey"
+	StaticText " "
+
 	Option "$GLPREFMNU_FOGMODE", gl_fogmode, "FogMode"
 	Slider "Fog Density", ddz_fog, 0,512,8,0
+}
+
+OptionMenu "DarkDoomZ_Flashlight_Settings" {
+	Title "Flashlight Settings"
 	StaticText " "
 
-	StaticText "Flashlight Settings"
 	Option "Quality","ddz_fl_quality", "Nice_Flashlight_Quality"
 	Option "Type","ddz_fl_type", "Nice_Flashlight_Type"
 	Option "Position","ddz_fl_pos", "Nice_Flashlight_Position"
 	Control "Toggle Key", "use DarkDoomZ_Flashlight"
-	StaticText " "
-
-	StaticText "Enabling or disabling sector effects", "grey"
-	StaticText "requires reloading the game or map.", "grey"
-	StaticText " "
-	StaticText "Classic DarkDoom modes", "grey"
-	StaticText "override regular setting.", "grey"
 }
