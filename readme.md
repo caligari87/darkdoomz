@@ -3,21 +3,26 @@ This simple mutator/add-on re-implements the concept behind SidDoyle's Dark Doom
 
 A settings menu is provided to adjust the effect. The following settings are available:
 
+## Main Settings
 * **Mode** - Several adjustment modes are available:
   * **Subtract** - Simply subtracts from the light level. This mimics DarkDoom's method.
   * **Compress** - Applies a linear range commpression, so the light levels don't bottom out as quickly.
   * **Clamp** - Clamps the maximum brightness level without lowering darker sectors.
+  * **Crush** - Darkens darker sectors more on an exponential curve, adding contrast.
   * **DarkDoom** - Three additional modes to emulate classic DarkDoom. These override the preset darkening settings.
-  * **Preset** - Eight pre-set lighting levels in 32-unit increments.
+* **Preset** - Eight pre-set lighting levels in 32-unit increments.
+
+## Advanced Settings
+* **Fine-Tune** - Adjust the preset darkness setting by +/-16 units.
 * **Min. Lightlevel** - Clamps the minimum light level for both "Subtract" and "Compress" modes.
 * **Sky Sectors** - Adjust how much effect is applied to sectors with a sky (full, half, or none)
 * **Sector Effects** - Enables or disables sector light effects (flicker, pulse, etc). Requires a restart of the map.
 
+## Fog Settings
 * **Fog Mode** - Alias to GZDoom's built-in light fade setting.
 * **Fog Density** - Overrides the default light fade intensity. Can make maps really dark at a distance even in brighter areas.
 
-There is also a flashlight available, with the following settings:
-
+## Flashlight Settings
 * **Quality**
   * **Simple** - Single spot light using the average spread/intensity of the fancy lights.
   * **Fancy** - Two spot lights to simulate both focused beam and light spill.
