@@ -67,7 +67,7 @@ class DarkDoomZ_SectorLightAdjust : EventHandler {
 				if(IsSky) FinalAdjustment *= (0.5 * SkyMode);
 
 				// Link to graphing calculator depiction of different modes
-				// https://www.desmos.com/calculator/n1lvnyceve
+				// https://www.desmos.com/calculator/v1ni4wftcg
 				switch(Mode) {
 					case 1: //subtract raw light level (simple fade)
 						Level.Sectors[i].Lightlevel = BaseLightLevels[i] - FinalAdjustment;
@@ -79,7 +79,7 @@ class DarkDoomZ_SectorLightAdjust : EventHandler {
 						Level.Sectors[i].Lightlevel = clamp(BaseLightLevels[i], 0, 256 - FinalAdjustment);
 						break;
 					case 4: //apply exponential gamma curve
-						Level.Sectors[i].Lightlevel = (256 - (FinalAdjustment ** (FinalAdjustment / 256))) * (BaseLightLevels[i] / 256.0) ** (1 + (FinalAdjustment / 32)) ;
+						Level.Sectors[i].Lightlevel = (256 - (FinalAdjustment ** (FinalAdjustment / 256))) * (BaseLightLevels[i] / 256.0) ** (1 + (FinalAdjustment / (33 - (FinalAdjustment / 8))));
 						break;
 					case 10: //DarkDoom Lite (fixed subtract mode)
 						Level.Sectors[i].Lightlevel = BaseLightLevels[i] - 96;
