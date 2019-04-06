@@ -98,8 +98,9 @@ class DarkDoomZ_SectorLightAdjust : EventHandler {
 				Level.Sectors[i].Lightlevel = max(Level.Sectors[i].Lightlevel, MinLight);
 				Level.Sectors[i].Lightlevel += Custom;
 
-				if(IsSky) FogDensity *= (0.5 * SkyMode);
-				level.Sectors[i].SetFogDensity(FogDensity);
+				double FinalFogDensity = FogDensity;
+				if(IsSky) FinalFogDensity *= (0.5 * SkyMode);
+				level.Sectors[i].SetFogDensity(FinalFogDensity);
 			}
 		}
 		OldMode = Mode;
