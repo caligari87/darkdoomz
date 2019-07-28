@@ -3,8 +3,8 @@ version "3.6"
 //Courtesy FishyClockwork, with modifications by Caligari87
 class DarkDoomZ_SectorLightAdjust : EventHandler {
 	Array<int> BaseLightLevels;
-	int Mode, Preset, Custom, SkyMode, FogDensity, MinLight;
-	int OldMode, OldPreset, OldCustom, OldSkyMode, OldFogDensity, OldMinLight;
+	int Mode, Preset, PreGain, PostGain, SkyMode, FogDensity, MinLight;
+	int OldMode, OldPreset, OldPreGain, OldPostGain, OldSkyMode, OldFogDensity, OldMinLight;
 	int BaseAdjustment, FinalAdjustment;
 	bool IsSky;
 
@@ -44,7 +44,8 @@ class DarkDoomZ_SectorLightAdjust : EventHandler {
 	void ChangeLighting() {
 		Mode = ddz_mode;
 		Preset = ddz_preset;
-		Custom = ddz_custom;
+		PreGain = ddz_pregain;
+		PostGain = ddz_postgain;
 		SkyMode = ddz_skymode;
 		FogDensity = ddz_fog;
 		MinLight = ddz_minlight;
@@ -52,7 +53,8 @@ class DarkDoomZ_SectorLightAdjust : EventHandler {
 		bool changed = (
 			OldMode != Mode ||
 			OldPreset != Preset ||
-			OldCustom != Custom ||
+			OldPreGain != PreGain ||
+			OldPostGain != PostGain ||
 			OldSkyMode != Skymode ||
 			OldFogDensity != FogDensity ||
 			OldMinLight != MinLight);
@@ -60,6 +62,9 @@ class DarkDoomZ_SectorLightAdjust : EventHandler {
 		if (changed) {
 			BaseAdjustment = 32 * Preset;
 			for(int i = 0; i < BaseLightLevels.Size(); i++) {
+				int BaseLightLevel = BaseLightLevels[i];
+				BaseLightLevel += PreGain;
+
 				IsSky = (level.Sectors[i].GetTexture(0) == skyflatnum ||
 						 level.Sectors[i].GetTexture(1) == skyflatnum);
 
@@ -70,33 +75,33 @@ class DarkDoomZ_SectorLightAdjust : EventHandler {
 				// https://www.desmos.com/calculator/v1ni4wftcg
 				switch(Mode) {
 					case 1: //subtract raw light level (simple fade)
-						Level.Sectors[i].Lightlevel = BaseLightLevels[i] - FinalAdjustment;
+						Level.Sectors[i].Lightlevel = BaseLightLevel - FinalAdjustment;
 						break;
 					case 2: //linear compression
-						Level.Sectors[i].Lightlevel = BaseLightLevels[i] * (1.0 - FinalAdjustment / 256.0);
+						Level.Sectors[i].Lightlevel = BaseLightLevel * (1.0 - FinalAdjustment / 256.0);
 						break;
 					case 3: //clamp max brightness level
-						Level.Sectors[i].Lightlevel = clamp(BaseLightLevels[i], 0, 256 - FinalAdjustment);
+						Level.Sectors[i].Lightlevel = clamp(BaseLightLevel, 0, 256 - FinalAdjustment);
 						break;
 					case 4: //apply exponential gamma curve
-						Level.Sectors[i].Lightlevel = (256 - (FinalAdjustment ** (FinalAdjustment / 256))) * (BaseLightLevels[i] / 256.0) ** (1 + (FinalAdjustment / (33 - (FinalAdjustment / 8))));
+						Level.Sectors[i].Lightlevel = (256 - (FinalAdjustment ** (FinalAdjustment / 256))) * (BaseLightLevel / 256.0) ** (1 + (FinalAdjustment / (33 - (FinalAdjustment / 8))));
 						break;
 					case 10: //DarkDoom Lite (fixed subtract mode)
-						Level.Sectors[i].Lightlevel = BaseLightLevels[i] - 96;
+						Level.Sectors[i].Lightlevel = BaseLightLevel - 96;
 						break;
 					case 11: //DarkDoom Classic (fixed subtract mode)
-						Level.Sectors[i].Lightlevel = BaseLightLevels[i] - 128;
+						Level.Sectors[i].Lightlevel = BaseLightLevel - 128;
 						break;
 					case 12: //DarkDoom Black (fixed subtract mode)
-						Level.Sectors[i].Lightlevel = BaseLightLevels[i] - 256;
+						Level.Sectors[i].Lightlevel = BaseLightLevel - 256;
 						break;
 					default: //disable
-						Level.Sectors[i].Lightlevel = BaseLightLevels[i]; //reset lightlevels
+						Level.Sectors[i].Lightlevel = BaseLightLevel; //reset lightlevels
 						break;
 				}
 
 				Level.Sectors[i].Lightlevel = max(Level.Sectors[i].Lightlevel, MinLight);
-				Level.Sectors[i].Lightlevel += Custom;
+				Level.Sectors[i].Lightlevel += PostGain;
 
 				double FinalFogDensity = FogDensity;
 				if(IsSky) FinalFogDensity *= (0.5 * SkyMode);
@@ -105,7 +110,8 @@ class DarkDoomZ_SectorLightAdjust : EventHandler {
 		}
 		OldMode = Mode;
 		OldPreset = Preset;
-		OldCustom = Custom;
+		OldPreGain = PreGain;
+		OldPostGain = PostGain;
 		OldSkyMode = SkyMode;
 		OldFogDensity = FogDensity;
 		OldMinLight = MinLight;

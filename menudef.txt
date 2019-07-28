@@ -73,8 +73,9 @@ OptionMenu "DarkDoomZ_Advanced_Settings" {
 	Title "Advanced Settings"
 	StaticText " "
 
-	Slider "Fine-tune","ddz_custom",-16,16,1,0
-	StaticText "Fine adjustment for lightlevel preset.", "darkgrey"
+	Slider "Pre-Gain","ddz_pregain",-255,255,1,0
+	Slider "Post-Gain","ddz_postgain",-255,255,1,0
+	StaticText "Adjust initial and final light levels.", "darkgrey"
 	StaticText " "
 
 	Slider "Min. Lightlevel","ddz_minlight",0,16,1,0
