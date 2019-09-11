@@ -1,7 +1,7 @@
 version "3.6"
 
 //Courtesy FishyClockwork, with modifications by Caligari87
-class DarkDoomZ_SectorLightAdjust : EventHandler {
+class DarkDoomZ_Handler : EventHandler {
 	Array<int> BaseLightLevels;
 	int Mode, Preset, PreGain, PostGain, SkyMode, FogDensity, MinLight;
 	int OldMode, OldPreset, OldPreGain, OldPostGain, OldSkyMode, OldFogDensity, OldMinLight;
