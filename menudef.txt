@@ -76,7 +76,7 @@ OptionMenu "DarkDoomZ_Advanced_Settings" {
 	StaticText "Clamps darkest lightlevel to this minimum.", "darkgrey"
 	StaticText " "
 
-	Option "Sky Sectors","ddz_skymode", "Nice_Sky_Modes"
+	Slider "Sky Sectors","ddz_skymode", 0.0, 1.0, 0.1, 1
 	StaticText "Specifies whether adjustment applies", "darkgrey"
 	StaticText "to sky sectors. Note certain skyboxes", "darkgrey"
 	StaticText "may still be affected.", "darkgrey"
