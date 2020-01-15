@@ -21,12 +21,6 @@ OptionValue "Nice_Settings" {
 	8, "Pure"
 }
 
-OptionValue "Nice_Sky_Modes" {
-	2, "Full effect"
-	1, "Half effect"
-	0, "No change"
-}
-
 OptionValue "Nice_Flashlight_Quality" {
 	0, "Simple"
 	1, "Fancy"
