@@ -1,115 +1,115 @@
 OptionValue "Nice_Modes" {
-	0, "Disable"
-	1, "Subtract"
-	2, "Compress"
-	3, "Clamp"
-	4, "Crush"
-	10, "DarkDoom Lite"
-	11, "DarkDoom Classic"
-	12, "DarkDoom Black"
+	0, "$DARK_DISABLE"
+	1, "$DARK_SUBTRACT"
+	2, "$DARK_COMPRESS"
+	3, "$DARK_CLAMP"
+	4, "$DARK_CRUSH"
+	10, "$DARK_LITE"
+	11, "$DARK_CLASSIC"
+	12, "$DARK_BLACK"
 }
 
 OptionValue "Nice_Settings" {
-	0, "Disable"
-	1, "Dim"
-	2, "Murky"
-	3, "Dismal"
-	4, "Oppressive"
-	5, "Inky"
-	6, "Stygian"
-	7, "Pitch"
-	8, "Pure"
+	0, "$DARK_DISABLE"
+	1, "$DARK_DIM"
+	2, "$DARK_MURKY"
+	3, "$DARK_DISMAL"
+	4, "$DARK_OPPRESSIVE"
+	5, "$DARK_INKY"
+	6, "$DARK_STYGIAN"
+	7, "$DARK_PITCH"
+	8, "$DARK_PURE"
 }
 
 OptionValue "Nice_Sky_Modes" {
-	2, "Full effect"
-	1, "Half effect"
-	0, "No change"
+	2, "$DARK_SKY_FULL"
+	1, "$DARK_SKY_HALF"
+	0, "$DARK_SKY_NO"
 }
 
 OptionValue "Nice_Flashlight_Quality" {
-	0, "Simple"
-	1, "Fancy"
+	0, "$DARK_SIMPLE"
+	1, "$DARK_FANCY"
 }
 
 OptionValue "Nice_Flashlight_Type" {
-	0, "Incandescent"
-	1, "Halogen"
-	2, "LED"
-	3, "Red Filter"
+	0, "$DARK_INCANDESCENT"
+	1, "$DARK_HALOGEN"
+	2, "$DARK_LED"
+	3, "$DARK_RED_FILTER"
 }
 
 OptionValue "Nice_Flashlight_Position" {
-	0, "Handheld"
-	1, "Left Shoulder"
-	2, "Right Shoulder"
-	3, "Helmet"
+	0, "$DARK_HANDHELD"
+	1, "$DARK_LEFT_SHOULDER"
+	2, "$DARK_RIGHT_SHOULDER"
+	3, "$DARK_HELMET"
 }
 
 AddOptionMenu "OptionsMenu" {
 	StaticText " "
-	Submenu "DarkDoomZ Settings", "DarkDoomZ_Settings"
+	Submenu "$DARK_SETTINGS", "DarkDoomZ_Settings"
 }
 
 OptionMenu "DarkDoomZ_Settings" {
-	Title "DarkDoomZ Settings"
+	Title "$DARK_SETTINGS"
 	StaticText " "
 
-	Option "Mode","ddz_mode","Nice_Modes"
-	Option "Setting","ddz_preset", "Nice_Settings"
+	Option "$DARK_MODE","ddz_mode","Nice_Modes"
+	Option "$DARK_SETTING","ddz_preset", "Nice_Settings"
 	StaticText " "
 
-	Submenu "Advanced Settings", "DarkDoomZ_Advanced_Settings"
-	Submenu "Fog Settings", "DarkDoomZ_Fog_Settings"
-	Submenu "Flashlight Settings", "DarkDoomZ_Flashlight_Settings"
+	Submenu "$DARK_ADVANCED", "DarkDoomZ_Advanced_Settings"
+	Submenu "$DARK_FOG", "DarkDoomZ_Fog_Settings"
+	Submenu "$DARK_FLASHLIGHT", "DarkDoomZ_Flashlight_Settings"
 	StaticText " "
 
-	StaticText "Classic DarkDoom modes", "darkgrey"
-	StaticText "override regular setting.", "darkgrey"
+	StaticText "$DARK_CLASSIC_INFO_1", "darkgrey"
+	StaticText "$DARK_CLASSIC_INFO_2", "darkgrey"
 	StaticText " "
 }
 
 OptionMenu "DarkDoomZ_Advanced_Settings" {
-	Title "Advanced Settings"
+	Title "$DARK_ADVANCED"
 	StaticText " "
 
-	Slider "Pre-Gain","ddz_pregain",-255,255,1,0
-	Slider "Post-Gain","ddz_postgain",-255,255,1,0
-	StaticText "Adjust initial and final light levels.", "darkgrey"
+	Slider "$DARK_PREGAIN","ddz_pregain",-255,255,1,0
+	Slider "$DARK_POSTGAIN","ddz_postgain",-255,255,1,0
+	StaticText "$DARK_GAIN_INFO", "darkgrey"
 	StaticText " "
 
-	Slider "Min. Lightlevel","ddz_minlight",0,16,1,0
-	StaticText "Clamps darkest lightlevel to this minimum.", "darkgrey"
+	Slider "$DARK_MIN_LIGHT","ddz_minlight",0,16,1,0
+	StaticText "$DARK_MIN_INFO", "darkgrey"
 	StaticText " "
 
-	Option "Sky Sectors","ddz_skymode", "Nice_Sky_Modes"
-	StaticText "Specifies whether adjustment applies", "darkgrey"
-	StaticText "to sky sectors. Note certain skyboxes", "darkgrey"
-	StaticText "may still be affected.", "darkgrey"
+	Option "$DARK_SKY","ddz_skymode", "Nice_Sky_Modes"
+	StaticText "$DARK_SKY_INFO_1", "darkgrey"
+	StaticText "$DARK_SKY_INFO_2", "darkgrey"
+	StaticText "$DARK_SKY_INFO_3", "darkgrey"
 	StaticText " "
 
-	Option "Sector Effects", "ddz_lighting", "OnOff"
-	StaticText "Enables or disables sector light effects", "darkgrey"
-	StaticText "such as flickering or pusling. Requires", "darkgrey"
-	StaticText "reloading the game or map.", "darkgrey"
+	Option "$DARK_SECTOR", "ddz_lighting", "OnOff"
+	StaticText "$DARK_SECTOR_INFO_1", "darkgrey"
+	StaticText "$DARK_SECTOR_INFO_2", "darkgrey"
+	StaticText "$DARK_SECTOR_INFO_3", "darkgrey"
 
 }
 
 OptionMenu "DarkDoomZ_Fog_Settings" {
-	Title "Fog Settings"
-	StaticText "-- OpenGL only --", "grey"
+	Title "$DARK_FOG"
+	StaticText "$DARK_OPENGL_ONLY", "grey"
 	StaticText " "
 
 	Option "$GLPREFMNU_FOGMODE", gl_fogmode, "FogMode"
-	Slider "Fog Density", ddz_fog, 0,512,8,0
+	Slider "$DARK_FOG_DENSITY", ddz_fog, 0,512,8,0
 }
 
 OptionMenu "DarkDoomZ_Flashlight_Settings" {
-	Title "Flashlight Settings"
+	Title "$DARK_FLASHLIGHT"
 	StaticText " "
 
-	Option "Quality","ddz_fl_quality", "Nice_Flashlight_Quality"
-	Option "Type","ddz_fl_type", "Nice_Flashlight_Type"
-	Option "Position","ddz_fl_pos", "Nice_Flashlight_Position"
-	Control "Toggle Key", "use DarkDoomZ_Flashlight"
+	Option "$DARK_QUALITY","ddz_fl_quality", "Nice_Flashlight_Quality"
+	Option "$DARK_TYPE","ddz_fl_type", "Nice_Flashlight_Type"
+	Option "$DARK_POSITION","ddz_fl_pos", "Nice_Flashlight_Position"
+	Control "$DARK_TOGGLE_KEY", "use DarkDoomZ_Flashlight"
 }

@@ -1,0 +1,148 @@
+[en default]
+
+/* Modes */
+
+DARK_SUBTRACT = "Subtract";
+DARK_COMPRESS = "Compress";
+DARK_CLAMP = "Clamp";
+DARK_CRUSH = "Crush";
+DARK_LITE = "DarkDoom Lite";
+DARK_CLASSIC = "DarkDoom Classic";
+DARK_BLACK = "DarkDoom Black";
+
+/* Settings */
+
+DARK_DIM = "Dim";
+DARK_MURKY = "Murky";
+DARK_DISMAL = "Dismal";
+DARK_OPPRESSIVE = "Oppressive";
+DARK_INKY = "Inky";
+DARK_STYGIAN = "Stygian";
+DARK_PITCH = "Pitch";
+DARK_PURE = "Pure";
+
+/* Sky Modes */
+
+DARK_SKY_FULL = "Full effect";
+DARK_SKY_HALF = "Half effect";
+DARK_SKY_NO = "No change";
+
+/* Flashlight */
+
+DARK_SIMPLE = "Simple";
+DARK_FANCY = "Fancy";
+DARK_INCANDESCENT = "Incandescent";
+DARK_HALOGEN = "Halogen";
+DARK_LED = "LED";
+DARK_RED_FILTER = "Red Filter";
+DARK_HANDHELD = "Handheld";
+DARK_LEFT_SHOULDER = "Left Shoulder";
+DARK_RIGHT_SHOULDER = "Right Shoulder";
+DARK_HELMET = "Helmet";
+
+/* Everything Else */
+
+DARKDOOMZ = "DarkDoomZ";
+DARK_DISABLE = "Disable";
+DARK_SETTINGS = "DarkDoomZ Settings";
+DARK_MODE = "Mode";
+DARK_SETTING = "Setting";
+DARK_ADVANCED = "Advanced Settings";
+DARK_FOG = "Fog Settings";
+DARK_FLASHLIGHT = "Flashlight Settings";
+DARK_CLASSIC_INFO_1 = "Classic DarkDoom modes";
+DARK_CLASSIC_INFO_2 = "override regular setting.";
+DARK_PREGAIN = "Pre-Gain";
+DARK_POSTGAIN = "Post-Gain";
+DARK_GAIN_INFO = "Adjust initial and final light levels.";
+DARK_MIN_LIGHT = "Min. Lightlevel";
+DARK_MIN_INFO = "Clamps darkest lightlevel to this minimum.";
+DARK_SKY = "Sky Sectors";
+DARK_SKY_INFO_1 = "Specifies whether adjustment applies";
+DARK_SKY_INFO_2 = "to sky sectors. Note certain skyboxes";
+DARK_SKY_INFO_3 = "may still be affected.";
+DARK_SECTOR = "Sector Effects";
+DARK_SECTOR_INFO_1 = "Enables or disables sector light effects";
+DARK_SECTOR_INFO_2 = "such as flickering or pulsing. Requires";
+DARK_SECTOR_INFO_3 = "reloading the game or map.";
+DARK_OPENGL_ONLY = "-- OpenGL only --";
+DARK_FOG_DENSITY = "Fog Density";
+DARK_QUALITY = "Quality";
+DARK_TYPE = "Type";
+DARK_POSITION = "Position";
+DARK_TOGGLE_KEY = "Toggle Key";
+DARK_TOGGLE_FLASHLIGHT = "Toggle Flashlight";
+
+[eo]
+
+/* Modes */
+
+DARK_SUBTRACT = "Subtrahi";
+DARK_COMPRESS = "Kompaktigi";
+DARK_CLAMP = "Krampi";
+DARK_CRUSH = "Pisti";
+DARK_LITE = "DarkDoom Eta";
+DARK_CLASSIC = "DarkDoom Klasika";
+DARK_BLACK = "DarkDoom Nigra";
+
+/* Settings */
+
+DARK_DIM = "Mallumeta";
+DARK_MURKY = "Malluma";
+DARK_DISMAL = "Malĝoja";
+DARK_OPPRESSIVE = "Prema";
+DARK_INKY = "Inka";
+DARK_STYGIAN = "Stiksa";
+DARK_PITCH = "Nigra";
+DARK_PURE = "Pura";
+
+/* Sky Modes */
+
+DARK_SKY_FULL = "Plena efiko";
+DARK_SKY_HALF = "Duona efiko";
+DARK_SKY_NO = "Neniu ŝanĝo";
+
+/* Flashlight */
+
+DARK_SIMPLE = "Simpla";
+DARK_FANCY = "Luksa";
+DARK_INCANDESCENT = "Inkandeska";
+DARK_HALOGEN = "Halogena";
+DARK_LED = "Lumdioda";
+DARK_RED_FILTER = "Ruĝfiltrita";
+DARK_HANDHELD = "Manportata";
+DARK_LEFT_SHOULDER = "Maldesktra Ŝultro";
+DARK_RIGHT_SHOULDER = "Desktra Ŝultro";
+DARK_HELMET = "Kasko";
+
+/* Everything Else */
+
+DARK_DISABLE = "Malaktivigi";
+DARK_SETTINGS = "Agordoj de DarkDoomZ";
+DARK_MODE = "Reĝimo";
+DARK_SETTING = "Agordo";
+DARK_ADVANCED = "Altnivelaj Agordoj";
+DARK_FOG = "Nebulo Agordoj";
+DARK_FLASHLIGHT = "Agordoj de Poŝlampo";
+DARK_CLASSIC_INFO_1 = "Klasikaj DarkDoom-reĝimoj";
+DARK_CLASSIC_INFO_2 = "transpasas norman agordon.";
+DARK_PREGAIN = "Pra-Akiro";
+DARK_POSTGAIN = "Post-Akiro";
+DARK_GAIN_INFO = "Agordas komencajn kaj finajn lumnivelojn.";
+DARK_MIN_LIGHT = "Min. Lumnivelo";
+DARK_MIN_INFO = "Limigas plej malluman lumnivelo ĉe ĉi tiu minimumo.";
+DARK_SKY = "Ĉielsektoroj";
+DARK_SKY_INFO_1 = "Specifas, ĉu la agordado afekcias";
+DARK_SKY_INFO_2 = "ĉielsektorojn. Sciu, ke kelkaj ĉielkestoj";
+DARK_SKY_INFO_3 = "ankoraŭ eble estos afekciitaj.";
+DARK_SECTOR = "Sektor-Efikoj";
+DARK_SECTOR_INFO_1 = "Aktivigas aŭ malaktivigas sektor-lum-efektojn";
+DARK_SECTOR_INFO_2 = "kiel ekzemple flagradon aŭ pulsadon.";
+DARK_SECTOR_INFO_3 = "Bezonas reŝargi la ludon aŭ mapon.";
+DARK_OPENGL_ONLY = "-- Nur en OpenGL --";
+DARK_FOG_DENSITY = "Nebulo Denseco";
+DARK_QUALITY = "Kvaliteco";
+DARK_TYPE = "Tipo";
+DARK_POSITION = "Loko";
+DARK_TOGGLE_KEY = "Baskula Klavo";
+DARK_TOGGLE_FLASHLIGHT = "Baskuli Poŝlampon";
