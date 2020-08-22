@@ -31,8 +31,8 @@ class DarkDoomZ_Handler : EventHandler {
 
 	override void PlayerEntered(PlayerEvent e) {
 		PlayerInfo player = players[e.PlayerNumber];
-		Inventory fl = Inventory(player.mo.Spawn("DarkDoomZ_Flashlight", (0, 0, 0), ALLOW_REPLACE));
-		player.mo.AddInventory(fl);
+		let FlashlightClass = (class<Inventory>)(Actor.GetReplacement("DarkDoomZ_Flashlight"));
+		player.mo.GiveInventory(FlashlightClass, 1);
 	}
 
 	override void UiTick() {
