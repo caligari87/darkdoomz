@@ -31,7 +31,8 @@ class DarkDoomZ_Handler : EventHandler {
 
 	override void PlayerEntered(PlayerEvent e) {
 		PlayerInfo player = players[e.PlayerNumber];
-		player.mo.giveinventory("DarkDoomZ_Flashlight", 1);
+		Inventory fl = Inventory(player.mo.Spawn("DarkDoomZ_Flashlight", (0, 0, 0), ALLOW_REPLACE));
+		player.mo.AddInventory(fl);
 	}
 
 	override void UiTick() {
@@ -300,14 +301,13 @@ class DarkDoomZ_Flashlight : CustomInventory {
 		ROCK A -1;
 		stop;
 	Use:
-		TNT1 A 1 ToggleActive();
+		TNT1 A 1 { invoker.ToggleActive(); }
 		loop;
 	}
 
-	action void ToggleActive() {
-		if(invoker.Active) { invoker.Active = false; A_PlaySound("DDZ_Flashlight_Off", CHAN_AUTO, 0.5); }
-		else { invoker.Active = true; A_PlaySound("DDZ_Flashlight_Off", CHAN_AUTO, 0.5); }
-
+	virtual void ToggleActive() {
+		if(Active) { Active = false; owner.A_PlaySound("DDZ_Flashlight_Off", CHAN_AUTO, 0.5); }
+		else { Active = true; owner.A_PlaySound("DDZ_Flashlight_Off", CHAN_AUTO, 0.5); }
 	}
 }
 
