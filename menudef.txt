@@ -21,12 +21,6 @@ OptionValue "Nice_Settings" {
 	8, "Pure"
 }
 
-OptionValue "Nice_Sky_Modes" {
-	2, "Full effect"
-	1, "Half effect"
-	0, "No change"
-}
-
 OptionValue "Nice_Flashlight_Quality" {
 	0, "Simple"
 	1, "Fancy"
@@ -82,7 +76,7 @@ OptionMenu "DarkDoomZ_Advanced_Settings" {
 	StaticText "Clamps darkest lightlevel to this minimum.", "darkgrey"
 	StaticText " "
 
-	Option "Sky Sectors","ddz_skymode", "Nice_Sky_Modes"
+	Slider "Sky Sectors","ddz_skymode", 0.0, 1.0, 0.1, 1
 	StaticText "Specifies whether adjustment applies", "darkgrey"
 	StaticText "to sky sectors. Note certain skyboxes", "darkgrey"
 	StaticText "may still be affected.", "darkgrey"

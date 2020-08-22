@@ -3,8 +3,9 @@ version "3.6"
 //Courtesy FishyClockwork, with modifications by Caligari87
 class DarkDoomZ_Handler : EventHandler {
 	Array<int> BaseLightLevels;
-	int Mode, Preset, PreGain, PostGain, SkyMode, FogDensity, MinLight;
-	int OldMode, OldPreset, OldPreGain, OldPostGain, OldSkyMode, OldFogDensity, OldMinLight;
+	int Mode, Preset, PreGain, PostGain, FogDensity, MinLight;
+	int OldMode, OldPreset, OldPreGain, OldPostGain, OldFogDensity, OldMinLight;
+	double SkyMode, OldSkyMode;
 	int BaseAdjustment, FinalAdjustment;
 	bool IsSky;
 
@@ -69,7 +70,7 @@ class DarkDoomZ_Handler : EventHandler {
 						 level.Sectors[i].GetTexture(1) == skyflatnum);
 
 				FinalAdjustment = BaseAdjustment;
-				if(IsSky) FinalAdjustment *= (0.5 * SkyMode);
+				if(IsSky) FinalAdjustment *= SkyMode;
 
 				// Link to graphing calculator depiction of different modes
 				// https://www.desmos.com/calculator/v1ni4wftcg
@@ -104,7 +105,7 @@ class DarkDoomZ_Handler : EventHandler {
 				Level.Sectors[i].Lightlevel += PostGain;
 
 				double FinalFogDensity = FogDensity;
-				if(IsSky) FinalFogDensity *= (0.5 * SkyMode);
+				if(IsSky) FinalFogDensity *= SkyMode;
 				level.Sectors[i].SetFogDensity(FinalFogDensity);
 			}
 		}
