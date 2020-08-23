@@ -105,5 +105,5 @@ OptionMenu "DarkDoomZ_Flashlight_Settings" {
 	Option "Quality","ddz_fl_quality", "Nice_Flashlight_Quality"
 	Option "Type","ddz_fl_type", "Nice_Flashlight_Type"
 	Option "Position","ddz_fl_pos", "Nice_Flashlight_Position"
-	Control "Toggle Key", "use DarkDoomZ_Flashlight"
+	Control "Toggle Key", "ddz_toggleflashlight"
 }
