@@ -65,6 +65,7 @@ OptionMenu "DarkDoomZ_Settings" {
 }
 
 OptionMenu "DarkDoomZ_Advanced_Settings" {
+	Class "DarkDoomZ_OptionMenu"
 	Title "Advanced Settings"
 	StaticText " "
 
@@ -91,6 +92,7 @@ OptionMenu "DarkDoomZ_Advanced_Settings" {
 }
 
 OptionMenu "DarkDoomZ_Fog_Settings" {
+	Class "DarkDoomZ_OptionMenu"
 	Title "Fog Settings"
 	StaticText "-- OpenGL only --", "grey"
 	StaticText " "
@@ -100,6 +102,7 @@ OptionMenu "DarkDoomZ_Fog_Settings" {
 }
 
 OptionMenu "DarkDoomZ_Flashlight_Settings" {
+	Class "DarkDoomZ_OptionMenu"
 	Title "Flashlight Settings"
 	StaticText " "
 
