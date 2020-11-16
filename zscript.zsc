@@ -71,7 +71,7 @@ class DarkDoomZ_Handler : EventHandler {
 						 level.Sectors[i].GetTexture(1) == skyflatnum);
 
 				FinalAdjustment = BaseAdjustment;
-				if(IsSky) FinalAdjustment *= SkyMode;
+				if(IsSky) { FinalAdjustment = int(FinalAdjustment * SkyMode); }
 
 				// Link to graphing calculator depiction of different modes
 				// https://www.desmos.com/calculator/v1ni4wftcg
@@ -80,13 +80,13 @@ class DarkDoomZ_Handler : EventHandler {
 						Level.Sectors[i].Lightlevel = BaseLightLevel - FinalAdjustment;
 						break;
 					case 2: //linear compression
-						Level.Sectors[i].Lightlevel = BaseLightLevel * (1.0 - FinalAdjustment / 256.0);
+						Level.Sectors[i].Lightlevel = int(BaseLightLevel * (1.0 - FinalAdjustment / 256.0));
 						break;
 					case 3: //clamp max brightness level
 						Level.Sectors[i].Lightlevel = clamp(BaseLightLevel, 0, 256 - FinalAdjustment);
 						break;
 					case 4: //apply exponential gamma curve
-						Level.Sectors[i].Lightlevel = (256 - (FinalAdjustment ** (FinalAdjustment / 256))) * (BaseLightLevel / 256.0) ** (1 + (FinalAdjustment / (33 - (FinalAdjustment / 8))));
+						Level.Sectors[i].Lightlevel = int((256 - (FinalAdjustment ** (FinalAdjustment / 256))) * (BaseLightLevel / 256.0) ** (1 + (FinalAdjustment / (33 - (FinalAdjustment / 8)))));
 						break;
 					case 10: //DarkDoom Lite (fixed subtract mode)
 						Level.Sectors[i].Lightlevel = BaseLightLevel - 96;
@@ -106,8 +106,8 @@ class DarkDoomZ_Handler : EventHandler {
 				Level.Sectors[i].Lightlevel += PostGain;
 
 				double FinalFogDensity = FogDensity;
-				if(IsSky) FinalFogDensity *= SkyMode;
-				level.Sectors[i].SetFogDensity(FinalFogDensity);
+				if(IsSky) { FinalFogDensity *= SkyMode; }
+				level.Sectors[i].SetFogDensity(int(FinalFogDensity));
 			}
 		}
 		OldMode = Mode;
@@ -270,9 +270,9 @@ class DarkDoomZ_Flashlight : CustomInventory {
 					if(!SelfLight2) {
 						SelfLight2 = DarkDoomZ_Spotlight(Spawn("DarkDoomZ_Spotlight",owner.pos,false));
 						SelfLight2.FollowTarget = owner;
-						SelfLight2.args[DynamicLight.LIGHT_RED] = R * 0.75; //R
-						SelfLight2.args[DynamicLight.LIGHT_GREEN] = G * 0.75; //G
-						SelfLight2.args[DynamicLight.LIGHT_BLUE] = B * 0.75; //B
+						SelfLight2.args[DynamicLight.LIGHT_RED] = int(R * 0.75); //R
+						SelfLight2.args[DynamicLight.LIGHT_GREEN] = int(G * 0.75); //G
+						SelfLight2.args[DynamicLight.LIGHT_BLUE] = int(B * 0.75); //B
 						SelfLight2.args[DynamicLight.LIGHT_INTENSITY] = spillRadius; //Radius
 						SelfLight2.SpotInnerAngle = spillInner;
 						SelfLight2.SpotOuterAngle = spillOuter;
