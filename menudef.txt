@@ -46,6 +46,7 @@ AddOptionMenu "OptionsMenu" {
 }
 
 OptionMenu "DarkDoomZ_Settings" {
+	Class "DarkDoomZ_OptionMenu"
 	Title "DarkDoomZ Settings"
 	StaticText " "
 

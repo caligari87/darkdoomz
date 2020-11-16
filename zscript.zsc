@@ -348,3 +348,11 @@ class DarkDoomZ_Spotlight : DynamicLight {
 		return -(d * v) - (k * (p - r));
 	}
 }
+
+class DarkDoomZ_OptionMenu : OptionMenu {
+	override void Init(Menu parent, OptionMenuDescriptor desc) {
+		super.Init(parent, desc);
+		DontDim = true;
+		DontBlur = true;
+	}
+}
