@@ -86,7 +86,7 @@ OptionMenu "DarkDoomZ_Advanced_Settings" {
 
 	Option "Sector Effects", "ddz_lighting", "OnOff"
 	StaticText "Enables or disables sector light effects", "darkgrey"
-	StaticText "such as flickering or pusling. Requires", "darkgrey"
+	StaticText "such as flickering or pulsing. Requires", "darkgrey"
 	StaticText "reloading the game or map.", "darkgrey"
 
 }
