@@ -306,8 +306,8 @@ class DarkDoomZ_Flashlight : CustomInventory {
 	}
 
 	virtual void ToggleActive() {
-		if(Active) { Active = false; owner.A_StartSound("DDZ_Flashlight_Off", CHAN_AUTO, 0, 0.5); }
-		else { Active = true; owner.A_StartSound("DDZ_Flashlight_Off", CHAN_AUTO, 0, 0.5); }
+		Active = !Active;
+		owner.A_StartSound("DarkDoomZ/Flashlight/Click", CHAN_AUTO, 0, 0.5);
 	}
 }
 
