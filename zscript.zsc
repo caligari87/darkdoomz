@@ -331,7 +331,7 @@ class DarkDoomZ_Spotlight : DynamicLight {
 			targetpos = followTarget.vec3Angle(
 				2 + (6 * abs(sin(offsetAngle))),
 				followtarget.angle + offsetAngle,
-				followtarget.player.viewheight + offsetZ,
+				followtarget.player.viewz - followtarget.pos.z + offsetZ,
 				false);
 			vel.x += DampedSpring(pos.x, targetpos.x, vel.x, 1, 1);
 			vel.y += DampedSpring(pos.y, targetpos.y, vel.y, 1, 1);
