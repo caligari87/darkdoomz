@@ -102,8 +102,8 @@ class DarkDoomZ_Handler : EventHandler {
 						break;
 				}
 
-				Level.Sectors[i].Lightlevel = max(Level.Sectors[i].Lightlevel, MinLight);
 				Level.Sectors[i].Lightlevel += PostGain;
+				Level.Sectors[i].Lightlevel = max(Level.Sectors[i].Lightlevel, MinLight);
 
 				double FinalFogDensity = FogDensity;
 				if(IsSky) { FinalFogDensity *= SkyMode; }

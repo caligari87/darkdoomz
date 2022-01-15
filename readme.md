@@ -15,7 +15,7 @@ A settings menu is provided to adjust the effect. The following settings are ava
 ## Advanced Settings
 * **Pre-Gain** - Adjust the level brightness *before* applying adjustments.
 * **Post-Gain** - Adjust the level brightness *after* applying adjustments.
-* **Min. Lightlevel** - Clamps the minimum light level for both "Subtract" and "Compress" modes.
+* **Min. Lightlevel** - Enforces a minimum light level regardless of other settings.
 * **Sky Sectors** - Adjust how much effect is applied to sectors with a sky.
   * `0.0` = No effect (sky sectors are not adjusted)
   * `0.5` = Half (sky sectors get half adjustment of other sectors)

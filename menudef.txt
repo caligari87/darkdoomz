@@ -40,8 +40,12 @@ OptionValue "Nice_Flashlight_Position" {
 	3, "Helmet"
 }
 
+OptionValue "Nice_Sector_Effects" {
+	0, "Remove"
+	1, "Keep"
+}
+
 AddOptionMenu "OptionsMenu" {
-	StaticText " "
 	Submenu "DarkDoomZ Settings", "DarkDoomZ_Settings"
 }
 
@@ -84,7 +88,7 @@ OptionMenu "DarkDoomZ_Advanced_Settings" {
 	StaticText "may still be affected.", "darkgrey"
 	StaticText " "
 
-	Option "Sector Effects", "ddz_lighting", "OnOff"
+	Option "Sector Light Effects", "ddz_lighting", "Nice_Sector_Effects"
 	StaticText "Enables or disables sector light effects", "darkgrey"
 	StaticText "such as flickering or pulsing. Requires", "darkgrey"
 	StaticText "reloading the game or map.", "darkgrey"
@@ -94,7 +98,6 @@ OptionMenu "DarkDoomZ_Advanced_Settings" {
 OptionMenu "DarkDoomZ_Fog_Settings" {
 	Class "DarkDoomZ_OptionMenu"
 	Title "Fog Settings"
-	StaticText "-- OpenGL only --", "grey"
 	StaticText " "
 
 	Option "$GLPREFMNU_FOGMODE", gl_fogmode, "FogMode"
