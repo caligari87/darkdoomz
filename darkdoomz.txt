@@ -1,0 +1,86 @@
+===========================================================================
+Advanced engine needed  : GZDoom 4.5+
+Primary purpose         : No levels included
+===========================================================================
+Title                   : DarkDoomZ
+Filename                : darkdoomz.zip
+Release date            : 2017-07-16
+Author                  : Sterling "Caligari87" Parker
+Email Address           : caligari.87@gmail.com
+Other Files By Author   : hg2-pist.zip
+                          haloguns.zip
+                          realcomb.zip
+                          caligari.zip
+                          Ugly as Sin
+Misc. Author Info       : Long-time ZDoom community member and forum admin.
+
+Description             : Makes levels darker. A adjustable, ZScriptified
+                          clone of Josh771's original Dark Doom.
+
+Additional Credits to   : Josh771 (formerly SidDoyle), Kinsie, Gutawer,
+                          FishyClockwork, phantombeta, Marisa Kirisame,
+                          Accensus, mshahen, Knox, a1337spy, Orange Bomb, and
+                          anyone else who tested, contributed, or provided
+                          feedback. See credits.md for full details.
+
+===========================================================================
+* What is included *
+
+New levels              : None
+Sounds                  : No
+Music                   : No
+Graphics                : No
+Dehacked/BEX Patch      : No
+Demos                   : No
+Other                   : No
+Other files required    : None
+
+
+* Play Information *
+
+Game                    : Doom 2
+Map #                   : N/A
+Single Player           : Designed for
+Cooperative 2-4 Player  : Designed for
+Deathmatch 2-4 Player   : Designed for
+Other game styles       : None
+Difficulty Settings     : Not implemented
+
+
+* Construction *
+
+Base                    : New from scratch
+Build Time              : About a week for the initial release, 4+ years of
+                          maintenance and feature refinement.
+Editor(s) used          : Micro text editor, SLADE, Audacity
+Known Bugs              : None
+May Not Run With        : Anything not GZDoom
+Tested With             : GZDoom 4.5+
+
+
+* Copyright / Permissions *
+
+zlib License
+
+(C) 2022 Sterling Parker (aka "Caligari87")
+
+This software is provided 'as-is', without any express or implied
+warranty.  In no event will the authors be held liable for any damages
+arising from the use of this software.
+
+Permission is granted to anyone to use this software for any purpose,
+including commercial applications, and to alter it and redistribute it
+freely, subject to the following restrictions:
+
+1. The origin of this software must not be misrepresented; you must not
+   claim that you wrote the original software. If you use this software
+   in a product, an acknowledgment in the product documentation would be
+   appreciated but is not required.
+2. Altered source versions must be plainly marked as such, and must not be
+   misrepresented as being the original software.
+3. This notice may not be removed or altered from any source distribution.
+
+* Where to get the file that this text file describes *
+
+The Usual: ftp://archives.gamers.org/pub/idgames/ and mirrors
+Web sites: https://caligari87.github.io/darkdoomz/
