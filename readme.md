@@ -13,9 +13,13 @@ A settings menu is provided to adjust the effect. The following settings are ava
 * **Preset** - Eight pre-set lighting levels in 32-unit increments.
 
 ## Advanced Settings
-* **Fine-Tune** - Adjust the preset darkness setting by +/-16 units.
+* **Pre-Gain** - Adjust the level brightness *before* applying adjustments.
+* **Post-Gain** - Adjust the level brightness *after* applying adjustments.
 * **Min. Lightlevel** - Clamps the minimum light level for both "Subtract" and "Compress" modes.
-* **Sky Sectors** - Adjust how much effect is applied to sectors with a sky (full, half, or none)
+* **Sky Sectors** - Adjust how much effect is applied to sectors with a sky.
+  * `0.0` = No effect (sky sectors are not adjusted)
+  * `0.5` = Half (sky sectors get half adjustment of other sectors)
+  * `1.0` = Full effect (sky sectors are adjusted like all other sectors)
 * **Sector Effects** - Enables or disables sector light effects (flicker, pulse, etc). Requires a restart of the map.
 
 ## Fog Settings
