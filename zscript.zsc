@@ -309,6 +309,12 @@ class DarkDoomZ_Flashlight : CustomInventory {
 		Active = !Active;
 		owner.A_StartSound("DarkDoomZ/Flashlight/Click", CHAN_AUTO, 0, 0.5);
 	}
+
+	override void DetachFromOwner() {
+		if(SelfLight1) { SelfLight1.Destroy(); }
+		if(SelfLight2) { SelfLight2.Destroy(); }
+		super.DetachFromOwner();
+	}
 }
 
 class DarkDoomZ_Spotlight : DynamicLight {
